@@ -35,7 +35,6 @@ void Graphics::prepareScene(SDL_Texture* background)
     if (background == nullptr) {
         SDL_RenderClear(_renderer);
         SDL_SetRenderDrawColor(_renderer, 0xff, 0xff, 0xff, 0xff);
-        //SDL_SetRenderDrawColor(_renderer, 0, 255, 0, 0);
         SDL_RenderClear(_renderer);
     }
     else {
@@ -83,7 +82,7 @@ void Graphics::quit()
 }
 
 void Graphics::render(int x, int y, const Sprite& sprite) {
-    const SDL_Rect* clip = sprite.getCurrentClip();
-    SDL_Rect renderQuad = { x, y, clip->w, clip->h };
-    SDL_RenderCopy(_renderer, sprite.texture, clip, &renderQuad);
+    //const SDL_Rect* clip = sprite.getCurrentClip();
+    //SDL_Rect renderQuad = { x, y, clip->w, clip->h };
+    //SDL_RenderCopy(_renderer, sprite.texture, clip, &renderQuad);
 }

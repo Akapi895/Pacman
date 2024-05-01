@@ -1,2 +1,59 @@
-﻿  move.cpp
-  Maze.vcxproj -> G:\CPP\Maze\x64\Debug\Maze.exe
+﻿  Maze.cpp
+G:\CPP\game\game_btl\Maze\sprite.h(88,7): warning C4099: 'Sprite': type name first seen using 'struct' now seen using 'class'
+  (compiling source file 'Maze.cpp')
+  G:\CPP\game\game_btl\Maze\sprite.h(88,7):
+  see declaration of 'Sprite'
+  
+  graphics.cpp
+G:\CPP\game\game_btl\Maze\Maze.cpp(68,19): error C2039: 'HandleInput': is not a member of 'Sprite'
+  G:\CPP\game\game_btl\Maze\sprite.h(88,7):
+  see declaration of 'Sprite'
+  
+G:\CPP\game\game_btl\Maze\sprite.h(88,7): warning C4099: 'Sprite': type name first seen using 'struct' now seen using 'class'
+  (compiling source file 'graphics.cpp')
+  G:\CPP\game\game_btl\Maze\sprite.h(88,7):
+  see declaration of 'Sprite'
+  
+  move.cpp
+G:\CPP\game\game_btl\Maze\sprite.h(88,7): warning C4099: 'Sprite': type name first seen using 'struct' now seen using 'class'
+  (compiling source file 'move.cpp')
+  G:\CPP\game\game_btl\Maze\sprite.h(88,7):
+  see declaration of 'Sprite'
+  
+G:\CPP\game\game_btl\Maze\move.cpp(12,17): error C2065: 'SPEED': undeclared identifier
+G:\CPP\game\game_btl\Maze\move.cpp(15,17): error C2065: 'SPEED': undeclared identifier
+G:\CPP\game\game_btl\Maze\move.cpp(18,17): error C2065: 'SPEED': undeclared identifier
+G:\CPP\game\game_btl\Maze\move.cpp(20,17): error C2065: 'SPEED': undeclared identifier
+G:\CPP\game\game_btl\Maze\move.cpp(39,11): error C2065: 'SPEED': undeclared identifier
+G:\CPP\game\game_btl\Maze\move.cpp(43,10): error C2065: 'SPEED': undeclared identifier
+G:\CPP\game\game_btl\Maze\move.cpp(48,11): error C2065: 'SPEED': undeclared identifier
+G:\CPP\game\game_btl\Maze\move.cpp(52,10): error C2065: 'SPEED': undeclared identifier
+G:\CPP\game\game_btl\Maze\move.cpp(55,10): error C2065: 'SPEED': undeclared identifier
+G:\CPP\game\game_btl\Maze\move.cpp(56,10): error C2065: 'SPEED': undeclared identifier
+G:\CPP\game\game_btl\Maze\move.cpp(59,11): error C2065: 'SPEED': undeclared identifier
+G:\CPP\game\game_btl\Maze\move.cpp(60,11): error C2065: 'SPEED': undeclared identifier
+G:\CPP\game\game_btl\Maze\move.cpp(63,11): error C2065: 'SPEED': undeclared identifier
+G:\CPP\game\game_btl\Maze\move.cpp(64,10): error C2065: 'SPEED': undeclared identifier
+G:\CPP\game\game_btl\Maze\move.cpp(67,10): error C2065: 'SPEED': undeclared identifier
+G:\CPP\game\game_btl\Maze\move.cpp(68,11): error C2065: 'SPEED': undeclared identifier
+  sprite.cpp
+G:\CPP\game\game_btl\Maze\graphics.h(7,8): warning C4099: 'Sprite': type name first seen using 'class' now seen using 'struct'
+  (compiling source file 'sprite.cpp')
+  G:\CPP\game\game_btl\Maze\sprite.h(88,7):
+  see declaration of 'Sprite'
+  
+G:\CPP\game\game_btl\Maze\sprite.cpp(152,22): error C2676: binary '|=': 'Direction' does not define this operator or a conversion to a type acceptable to the predefined operator
+G:\CPP\game\game_btl\Maze\sprite.cpp(155,22): error C2676: binary '|=': 'Direction' does not define this operator or a conversion to a type acceptable to the predefined operator
+G:\CPP\game\game_btl\Maze\sprite.cpp(158,22): error C2676: binary '|=': 'Direction' does not define this operator or a conversion to a type acceptable to the predefined operator
+G:\CPP\game\game_btl\Maze\sprite.cpp(161,22): error C2676: binary '|=': 'Direction' does not define this operator or a conversion to a type acceptable to the predefined operator
+G:\CPP\game\game_btl\Maze\sprite.cpp(170,22): error C2676: binary '&=': 'Direction' does not define this operator or a conversion to a type acceptable to the predefined operator
+G:\CPP\game\game_btl\Maze\sprite.cpp(173,22): error C2676: binary '&=': 'Direction' does not define this operator or a conversion to a type acceptable to the predefined operator
+G:\CPP\game\game_btl\Maze\sprite.cpp(176,22): error C2676: binary '&=': 'Direction' does not define this operator or a conversion to a type acceptable to the predefined operator
+G:\CPP\game\game_btl\Maze\sprite.cpp(179,22): error C2676: binary '&=': 'Direction' does not define this operator or a conversion to a type acceptable to the predefined operator
+G:\CPP\game\game_btl\Maze\sprite.cpp(235,12): error C2065: 'x_val_': undeclared identifier
+G:\CPP\game\game_btl\Maze\sprite.cpp(236,12): error C2065: 'y_val_': undeclared identifier
+G:\CPP\game\game_btl\Maze\sprite.cpp(237,26): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+G:\CPP\game\game_btl\Maze\sprite.cpp(237,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+G:\CPP\game\game_btl\Maze\sprite.cpp(237,34): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+G:\CPP\game\game_btl\Maze\sprite.cpp(237,34): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Generating Code...

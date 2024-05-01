@@ -5,55 +5,82 @@
 
 using namespace std;
 
-int main(int argc, char** argv) {
-    Graphics graphics;
-    graphics.init();
+namespace {
+    bool Init()
+    {
+        if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
+        {
+            return false;
+        }
+            //logErrorAndExit("SDL_Init", SDL_GetError());
 
-    Mouse mouse(SIZE * 5 / 2, SIZE * 5 / 2);
+        _window = SDL_CreateWindow("Hello Maze", SDL_WINDOWPOS_CENTERED,
+            SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT,
+            SDL_WINDOW_SHOWN);
+        if (_window == nullptr)
+        {
+            Graphics::logErrorAndExit("CreateWindow", SDL_GetError());
+            return false;
+        }
+        if (!IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG))
+        {
+            Graphics::logErrorAndExit("SDL_image error:", IMG_GetError());
+            return false;
+        }            
+        _renderer = SDL_CreateRenderer(_window, -1,
+            SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+
+        if (_renderer == nullptr)
+        { 
+            Graphics::logErrorAndExit("CreateRenderer", SDL_GetError());
+            return false;
+        }    
+        SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
+        SDL_RenderSetLogicalSize(_renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+        return true;
+    }
+
+}
+
+int main(int argc, char** argv) {
+    //Graphics graphics;
+    //graphics.init();
+    if (!Init())
+    {
+        return -1;
+    }
+
+    //Mouse mouse(SIZE * 5 / 2, SIZE * 5 / 2);
     
     SDL_Event event;
 
-    Sprite sam;
-    SDL_Texture* samTexture = graphics.loadTexture("image\\sprites\\sam.png");
-    sam.init(samTexture, SAMURAI_FRAMES, SAMURAI);
-    
+    Sprite slime;
+    slime.LoadImg("image\\sprites\\Red_Slime\\Idle.png", _renderer);
 
     bool flag = 1;
     while (flag) {
-        SDL_GetMouseState(&mouse.posx, &mouse.posy);
-
-        SDL_PollEvent(&event);
-        switch (event.type) {
-        case SDL_QUIT:
-            exit(0);
-            break;
-        case SDL_KEYDOWN:
-
-            break;
-        case SDL_MOUSEBUTTONDOWN:
-            cerr << "Down at (" << mouse.posx << ", " << mouse.posy << ")\n";
-            break;
-        case SDL_MOUSEBUTTONUP:
-            cerr << "Up at (" << mouse.posx << ", " << mouse.posy << ")\n";
-            break;
+        if (SDL_PollEvent(&event) != 0)
+        {
+            if (event.type == SDL_QUIT)
+            {
+                flag = false;
+            }
+            slime.HandleInput(event);
         }
+        //Graphics::prepareScene();
 
-        sam.tick();
-        graphics.prepareScene();
-        graphics.render(400, 400, sam);
+        SDL_RenderClear(_renderer);
         
-        mouse.keyPress();
+        SDL_SetRenderDrawColor(_renderer, 255, 255, 255, 255);
 
-        //mouse.render(graphics);
+        slime.render(_renderer);
+        SDL_RenderPresent(_renderer);
 
-
-        graphics.presentScene();
-        SDL_Delay(50);
+        SDL_Delay(20);
     }
 
-    SDL_DestroyTexture(samTexture); samTexture = nullptr;
 
-    graphics.quit();
+    Graphics::quit();
 
     return 0;
 

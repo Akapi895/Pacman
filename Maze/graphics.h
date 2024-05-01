@@ -6,9 +6,12 @@
 
 struct Sprite;
 
-struct Graphics {
-    SDL_Renderer* _renderer;
-    SDL_Window* _window;
+static SDL_Renderer* _renderer;
+static SDL_Window* _window;
+
+namespace Graphics 
+{
+    
 
     void logErrorAndExit(const char* msg, const char* error);
 
@@ -20,6 +23,9 @@ struct Graphics {
 
     SDL_Texture* loadTexture(const char* filename);
 
+    //bool checkCollision(SDL_Rect& a, SDL_Rect& b);
+    //bool checkOnMap(SDL_Rect& box); 
+    
     void renderTexture(SDL_Texture* texture, int x, int y);
 
     void render(int x, int y, const Sprite& sprite);

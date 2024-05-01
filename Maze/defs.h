@@ -10,8 +10,8 @@
 
 const int SCREEN_WIDTH = 1280;
 const int SCREEN_HEIGHT = 720;
-const std::string WINDOW_TITLE = "Hello Maze";
 
+//#define SPEED 10
 
 #define SIZE 32
 #define SPRITE_SIZE 32

@@ -1,0 +1,109 @@
+# depslib dependency file v1.0
+1714556021 source:g:\cpp\game\game_btl\pacman\baseobject.cpp
+	"BaseObject.h"
+
+1714556021 g:\cpp\game\game_btl\pacman\baseobject.h
+	"CommonFunction.h"
+
+1714557672 g:\cpp\game\game_btl\pacman\commonfunction.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<iostream>
+	<string>
+	<fstream>
+	<vector>
+	<map>
+	<algorithm>
+
+1714556021 source:g:\cpp\game\game_btl\pacman\commonfunction.cpp
+	"CommonFunction.h"
+
+1714556021 source:g:\cpp\game\game_btl\pacman\gamemap.cpp
+	"GameMap.h"
+
+1714556021 g:\cpp\game\game_btl\pacman\gamemap.h
+	"CommonFunction.h"
+	"BaseObject.h"
+
+1714556021 source:g:\cpp\game\game_btl\pacman\mousebutton.cpp
+	"MouseButton.h"
+
+1714556021 g:\cpp\game\game_btl\pacman\mousebutton.h
+	"CommonFunction.h"
+	"BaseObject.h"
+
+1714556021 source:g:\cpp\game\game_btl\pacman\musicgame.cpp
+	"MusicGame.h"
+
+1714556021 g:\cpp\game\game_btl\pacman\musicgame.h
+	"CommonFunction.h"
+
+1714556021 source:g:\cpp\game\game_btl\pacman\pacmandie.cpp
+	"PacManDie.h"
+
+1714556021 g:\cpp\game\game_btl\pacman\pacmandie.h
+	"CommonFunction.h"
+	"BaseObject.h"
+	"GameMap.h"
+
+1714556021 source:g:\cpp\game\game_btl\pacman\pacmanobject.cpp
+	"PacmanObject.h"
+
+1714556021 g:\cpp\game\game_btl\pacman\pacmanobject.h
+	"CommonFunction.h"
+	"BaseObject.h"
+	"GameMap.h"
+	"MusicGame.h"
+
+1714556021 source:g:\cpp\game\game_btl\pacman\petobject.cpp
+	"PetObject.h"
+
+1714556021 g:\cpp\game\game_btl\pacman\petobject.h
+	"CommonFunction.h"
+	"BaseObject.h"
+	"PacmanObject.h"
+	"GameMap.h"
+
+1714556021 source:g:\cpp\game\game_btl\pacman\rendergame.cpp
+	"RenderGame.h"
+
+1714556021 g:\cpp\game\game_btl\pacman\rendergame.h
+	"CommonFunction.h"
+	"TextObject.h"
+	"BaseObject.h"
+	"MouseButton.h"
+
+1714556021 g:\cpp\game\game_btl\pacman\textobject.h
+	"CommonFunction.h"
+
+1714556021 source:g:\cpp\game\game_btl\pacman\settinggame.cpp
+	"SettingGame.h"
+
+1714556021 g:\cpp\game\game_btl\pacman\settinggame.h
+	"CommonFunction.h"
+	"BaseObject.h"
+	"GameMap.h"
+	"PacmanObject.h"
+	"Timer.h"
+	"TextObject.h"
+	"PetObject.h"
+	"PacManDie.h"
+	"MusicGame.h"
+	"RenderGame.h"
+	"MouseButton.h"
+
+1714556022 g:\cpp\game\game_btl\pacman\timer.h
+	"CommonFunction.h"
+
+1714556021 source:g:\cpp\game\game_btl\pacman\textobject.cpp
+	"TextObject.h"
+
+1714556022 source:g:\cpp\game\game_btl\pacman\timer.cpp
+	"Timer.h"
+
+1714556304 source:g:\cpp\game\game_btl\pacman\main.cpp
+	"SettingGame.h"
+	<time.h>
+

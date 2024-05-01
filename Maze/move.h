@@ -5,14 +5,14 @@
 #define INITIAL_SPEED 10
 #include "defs.h"
 
-struct Graphics;
+//struct Graphics;
 //struct Sprite;
 
 struct Mouse {
     int x, y;
     int posx, posy;
     int dx = 0, dy = 0;
-    int speed = INITIAL_SPEED;
+    
     const Uint8* currentKeyStates;
     SDL_Texture* _char;
 
@@ -31,7 +31,7 @@ struct Mouse {
     void turnSouthEast();
 
 
-    void render(Graphics& graphics);
+    void render();
     bool gameOver();
 };
 
