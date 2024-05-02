@@ -30,19 +30,19 @@ const int COLOR_KEY_G = 175;
 const int COLOR_KEY_B = 180;
 
 const int TILE_SIZE = 32;
-const string GAME_TITLE = "PACMAN23021709";
+const string GAME_TITLE = "PACMAN_23021709";
 
 const int FRAME_PER_SECOND = 8;
 
-const int NUMBER_PET_ = 4;
+const int NUMBER_PET_ = 4; //ảo ma
 
-const int TIME_PLAY = 300; // 5 ph�t
+const int TIME_PLAY = 300; // 5 phút
 
 const int SIZE_TEXT_ = 28;
 
 const int NUMBER_LIVES_ = 3;
 
-const int MAX_NUMBER_MAP_ = 5;
+const int MAX_NUMBER_MAP_ = 5; // check
 
 #define START_PACMAN_X_ 13
 #define START_PACMAN_Y_ 4
