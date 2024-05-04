@@ -23,7 +23,7 @@ void Timer::start()
 
 void Timer::stop()
 {
-	is_paused_ = false;
+	is_paused_ = true; //false
 	is_started_ = false;
 }
 

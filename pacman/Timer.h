@@ -1,5 +1,5 @@
-#ifndef TIMER_H_
-#define TIMER_H_
+#ifndef TIMER_H
+#define TIMER_H
 #include "CommonFunction.h"
 
 class Timer
@@ -22,10 +22,10 @@ public:
 private:
 	int start_tick_;
 	int paused_tick_;
-	
+
+    bool is_started_;
 	bool is_paused_;
-	bool is_started_;
 };
 
 
-#endif // !TIMER_H_
+#endif
