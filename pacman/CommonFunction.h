@@ -1,5 +1,5 @@
-#ifndef COMMON_FUNCTION_H_
-#define COMMON_FUNCTION_H_
+#ifndef COMMON_FUNCTION_H
+#define COMMON_FUNCTION_H
 
 #include <SDL.h>
 #include <SDL_image.h>
@@ -140,4 +140,4 @@ bool checkCollision(const SDL_Rect& a, const SDL_Rect& b);
 
 #define X_BUTTON_CANCEL_ 525
 #define Y_BUTTON_CANCEL_ 435
-#endif // !COMMON_FUNCTION_H_
+#endif // COMMON_FUNCTION_H_

@@ -11,35 +11,29 @@ MouseButton::~MouseButton()
 
 }
 
-void MouseButton::setPositionObject(int xPos, int yPos, int width, int height)
+void MouseButton::setPositionObject(int posx, int posy, int width, int height)
 {
-	object_position_.x = xPos;
-	object_position_.y = yPos;
-	object_position_.h = height;
+	object_position_.x = posx;
+	object_position_.y = posy;
 	object_position_.w = width;
+	object_position_.h = height;
 }
 
 bool MouseButton::handleEvent(SDL_Event* event_, SDL_Renderer* renderer)
 {
+	int x, y;
+	SDL_GetMouseState(&x, &y);
 
-	int xMouse, yMouse;
-	SDL_GetMouseState(&xMouse, &yMouse);
-	if (xMouse < object_position_.x)
+	if (x < object_position_.x || x > object_position_.x + object_position_.w)
 	{
 		return false;
 	}
-	else if (xMouse > object_position_.x + object_position_.w)
+
+	else if (y < object_position_.y || y > object_position_.y + object_position_.h)
 	{
 		return false;
 	}
-	else if (yMouse < object_position_.y)
-	{
-		return false;
-	}
-	else if (yMouse > object_position_.y + object_position_.h)
-	{
-		return false;
-	}
+
 	return true;
 }
 

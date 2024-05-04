@@ -316,7 +316,7 @@ void renderImageRankScore( BaseObject& imageLossGame, vector<int> rankScore, SDL
 	TextObject scoreText;
 	scoreText.setColor(WHITE_);
 	bool inRank = true;
-	
+
 	while (inRank)
 	{
 		SDL_RenderClear(renderer);
