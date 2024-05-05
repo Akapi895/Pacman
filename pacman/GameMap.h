@@ -4,15 +4,15 @@
 #include "CommonFunction.h"
 #include "BaseObject.h"
 
-#define MAP_TILES_IMAGE_ 10
+#define MAP_TILES_IMAGE_ 10 //???
 
 struct Map
 {
-	int start_x_ = 0;
-	int start_y_ = 0;
+	int start_x = 0;
+	int start_y = 0;
 
-	int max_x_ = 0;
-	int max_y_ = 0;
+	int max_x = 0;
+	int max_y = 0;
 	int tiles_number_[MAX_MAP_Y][MAX_MAP_X];
 	string file_name_ = "";
 
@@ -21,8 +21,8 @@ struct Map
 class TileMap : public BaseObject
 {
 public:
-	TileMap() { ; }
-	~TileMap() { ; }
+	TileMap() {;}
+	~TileMap() {;}
 
 private:
 

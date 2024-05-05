@@ -6,7 +6,7 @@ class Timer
 {
 public:
 	Timer();
-	~Timer();
+	~Timer() { ; }
 
 	void start();
 	void stop();
@@ -20,11 +20,11 @@ public:
 	bool isPaused();
 
 private:
-	int start_tick_;
-	int paused_tick_;
+	int start_tick;
+	int paused_tick;
 
-    bool is_started_;
-	bool is_paused_;
+    bool is_started;
+	bool is_paused;
 };
 
 

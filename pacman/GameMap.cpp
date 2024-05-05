@@ -16,11 +16,11 @@ void GameMap::loadMap(string nameMap)
 			}
 		}
 	}
-	game_map_.start_x_ = 0;
-	game_map_.start_y_ = 0;
+	game_map_.start_x = 0;
+	game_map_.start_y = 0;
 
-	game_map_.max_x_ = MAX_MAP_X * TILE_SIZE;
-	game_map_.max_y_ = MAX_MAP_Y * TILE_SIZE;
+	game_map_.max_x = MAX_MAP_X * TILE_SIZE;
+	game_map_.max_y = MAX_MAP_Y * TILE_SIZE;
 
 	game_map_.file_name_ = nameMap;
 	inFile.close();
