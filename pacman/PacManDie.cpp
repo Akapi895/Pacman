@@ -69,26 +69,17 @@ void PacmanDie::setImage(int goType, const SDL_Rect& pacmanDiePos, SDL_Renderer*
 	GameMap& renderMap, BaseObject& renderBackground)
 {
 	if (goType == GO_DOWN)
-	{
 		loadImage("image/pacman_die_down.png", renderer, false, &COLOR_KEY_WHITE_);
-	}
 	else if (goType == GO_UP)
-	{
-		loadImage("image/pacman_die_up.png", renderer, false, &COLOR_KEY_WHITE_);
-	}
+        loadImage("image/pacman_die_up.png", renderer, false, &COLOR_KEY_WHITE_);
 	else if (goType == GO_RIGHT)
-	{
 		loadImage("image/pacman_die_right.png", renderer, true, &COLOR_KEY_WHITE_);
-	}
 	else if (goType == GO_LEFT)
-	{
 		loadImage("image/pacman_die_left.png", renderer, true, &COLOR_KEY_WHITE_);
-	}
 
 	setPos(pacmanDiePos);
 
-	for (int i = 0; i < PACMAN_DIE_FRAME_; i++)
-	{
+	for (int i = 0; i < PACMAN_DIE_FRAME_; i++) {
 		SDL_RenderClear(renderer);
 
 		renderBackground.render(renderer);
@@ -96,7 +87,7 @@ void PacmanDie::setImage(int goType, const SDL_Rect& pacmanDiePos, SDL_Renderer*
 		render(renderer);
 
 		SDL_RenderPresent(renderer);
-		SDL_Delay(150);
+		SDL_Delay(125);
 	}
 }
 

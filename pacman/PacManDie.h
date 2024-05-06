@@ -13,11 +13,12 @@ public:
 	bool loadImage(string path, SDL_Renderer* renderer, bool isVertical = false,
                 SDL_Color* colorKey = NULL);
 	void setClips(bool isVertical = false);
-	void render(SDL_Renderer* renderer);
 
     void setImage(int goType, const SDL_Rect& pacmanDiePos, SDL_Renderer* renderer,
                    GameMap& renderMap, BaseObject& renderBackground);
     void setPos(SDL_Rect pos);
+
+    void render(SDL_Renderer* renderer);
 
 private:
     int width_frame_;
