@@ -8,7 +8,7 @@
 class PacmanDie : public BaseObject {
 public:
     PacmanDie();
-	~PacmanDie();
+	~PacmanDie() { ; }
 
 	bool loadImage(string path, SDL_Renderer* renderer, bool isVertical = false,
                 SDL_Color* colorKey = NULL);
