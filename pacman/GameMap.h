@@ -1,5 +1,5 @@
-#ifndef GAME_MAP_H_
-#define GAME_MAP_H_
+#ifndef GAME_MAP_H
+#define GAME_MAP_H
 
 #include "CommonFunction.h"
 #include "BaseObject.h"
@@ -45,4 +45,4 @@ private:
 
 	int number_items_ = 0;
 };
-#endif // !GAME_MAP_H_
+#endif // GAME_MAP_H

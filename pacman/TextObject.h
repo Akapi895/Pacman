@@ -1,5 +1,5 @@
-#ifndef TEXT_OBJECT_H_
-#define TEXT_OBJECT_H_
+#ifndef TEXT_OBJECT_H
+#define TEXT_OBJECT_H
 
 #include "CommonFunction.h"
 

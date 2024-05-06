@@ -1,5 +1,5 @@
-#ifndef PACMAN_OBJECT_H_
-#define PACMAN_OBJECT_H_
+#ifndef PACMAN_OBJECT_H
+#define PACMAN_OBJECT_H
 
 #include "CommonFunction.h"
 #include "BaseObject.h"
