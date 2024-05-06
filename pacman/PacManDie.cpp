@@ -50,6 +50,11 @@ void PacmanDie::setClips(bool isVertical) {
     }
 }
 
+void PacmanDie::setPos(SDL_Rect pos) {
+	x_pos_ = pos.x;
+	y_pos_ = pos.y;
+}
+
 void PacmanDie::render(SDL_Renderer* renderer)
 {
 	current_frame_++;
@@ -59,3 +64,39 @@ void PacmanDie::render(SDL_Renderer* renderer)
 	SDL_Rect posScreen = { x_pos_, y_pos_, width_frame_, height_frame_ };
 	SDL_RenderCopy(renderer, texture_, &clip_rect_[current_frame_], &posScreen);
 }
+
+void PacmanDie::setImage(int goType, const SDL_Rect& pacmanDiePos, SDL_Renderer* renderer,
+	GameMap& renderMap, BaseObject& renderBackground)
+{
+	if (goType == GO_DOWN)
+	{
+		loadImage("image/pacman_die_down.png", renderer, false, &COLOR_KEY_WHITE_);
+	}
+	else if (goType == GO_UP)
+	{
+		loadImage("image/pacman_die_up.png", renderer, false, &COLOR_KEY_WHITE_);
+	}
+	else if (goType == GO_RIGHT)
+	{
+		loadImage("image/pacman_die_right.png", renderer, true, &COLOR_KEY_WHITE_);
+	}
+	else if (goType == GO_LEFT)
+	{
+		loadImage("image/pacman_die_left.png", renderer, true, &COLOR_KEY_WHITE_);
+	}
+
+	setPos(pacmanDiePos);
+
+	for (int i = 0; i < PACMAN_DIE_FRAME_; i++)
+	{
+		SDL_RenderClear(renderer);
+
+		renderBackground.render(renderer);
+		renderMap.drawMap(renderer);
+		render(renderer);
+
+		SDL_RenderPresent(renderer);
+		SDL_Delay(150);
+	}
+}
+

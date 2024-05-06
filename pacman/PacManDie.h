@@ -17,7 +17,7 @@ public:
 
     void setImage(int goType, const SDL_Rect& pacmanDiePos, SDL_Renderer* renderer,
                    GameMap& renderMap, BaseObject& renderBackground);
-    void setPos(SDL_Rect posScr);
+    void setPos(SDL_Rect pos);
 
 private:
     int width_frame_;
