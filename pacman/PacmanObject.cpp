@@ -1,63 +1,53 @@
 #include "PacmanObject.h"
 
-PacmanObject::PacmanObject()
-{
+PacmanObject::PacmanObject() {
 	current_frame_ = 0;
-	width_frame_ = 0;
-	height_frame_ = 0;
+	width_frame_   = 0;
+	height_frame_  = 0;
 
 	x_pos_ = 0;
 	y_pos_ = 0;
 
 	direction_current_ = GO_NONE;
-	direction_input_ = GO_NONE;
+	direction_input_   = GO_NONE;
 
 	number_items = 0;
 	score_ = 0;
 }
 
-PacmanObject::~PacmanObject()
-{
 
-}
-
-void PacmanObject::setStartPacman(SDL_Renderer* renderer, SDL_Color* colorKey)
-{
+void PacmanObject::setStartPacman(SDL_Renderer* renderer, SDL_Color* colorKey) {
 	x_pos_ = START_PACMAN_X_ * PIXEL_CLIP_;
 	y_pos_ = START_PACMAN_Y_ * PIXEL_CLIP_;
 
-	direction_current_ = GO_RIGHT;
-	direction_input_ = GO_RIGHT;
+	direction_current_ = GO_NONE; //GO_RIGHT
+	direction_input_ = GO_NONE; //GO_RIGHT
 
 	loadImage("image/pacman_right.png", renderer, false, colorKey);
 }
 
-void PacmanObject::setNumberItems(int numberItems)
-{
+void PacmanObject::setNumberItems(int numberItems) {
 	number_items = numberItems;
 }
 
-void PacmanObject::setCurrentFrame(const int numberFrame)
-{
+void PacmanObject::setCurrentFrame(const int numberFrame) {
 	current_frame_ = numberFrame;
 }
 
-void PacmanObject::setScore(const int score)
-{
+void PacmanObject::setScore(const int score) {
 	score_ = score;
 }
 
-int PacmanObject::getScore() const
-{
+int PacmanObject::getScore() const {
 	return score_;
 }
 
-int PacmanObject::getNumberItems() const
-{
+int PacmanObject::getNumberItems() const {
 	return number_items;
 }
 
-bool PacmanObject::loadImage(string path, SDL_Renderer* renderer, bool isVertical, SDL_Color* colorKey)
+bool PacmanObject::loadImage(string path, SDL_Renderer* renderer,
+                             bool isVertical, SDL_Color* colorKey)
 {
 	bool success = BaseObject::loadImage(path, renderer, colorKey);
 	if (success == true)

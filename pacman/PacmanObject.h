@@ -10,7 +10,7 @@ class PacmanObject : public BaseObject
 {
 public:
 	PacmanObject();
-	~PacmanObject();
+	~PacmanObject(){ ; }
 
 	void setStartPacman(SDL_Renderer* renderer, SDL_Color* colorKey);
 
@@ -56,4 +56,4 @@ protected:
 	SDL_Rect clip_rect_[PACMAN_FRAME_];
 };
 
-#endif // !PACMAN_OBJECT_H_
+#endif // PACMAN_OBJECT_H
