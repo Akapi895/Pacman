@@ -7,11 +7,10 @@ PacmanDie::PacmanDie() {
     current_frame_ = -1;
 
     x_pos_ = 0;
-    y_pos_ = 0
+    y_pos_ = 0;
 }
 
-bool PacmanDie::loadImage(string path, SDL_Renderer* renderer, bool isVertical = false,
-                SDL_Color* colorKey = NULL)
+bool PacmanDie::loadImage(string path, SDL_Renderer* renderer, bool isVertical, SDL_Color* colorKey)
 {
     bool success = BaseObject::loadImage(path, renderer, colorKey);
     if (success) {

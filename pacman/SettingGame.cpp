@@ -132,16 +132,16 @@ void startGame(SDL_Renderer* renderer, SDL_Event* event_)
 			}
 		}
 
-		if (buttonDifferentGame.handleEvent(event_, renderer))
-		{
-			smallLight.setRect(X_BUTTON_DIFFERENT_GAME_, Y_BUTTON_DIFFERENT_GAME_);
-			smallLight.render(renderer);
-
-			if (event_->type == SDL_MOUSEBUTTONDOWN)
-			{
-				SDL_OpenURL("https://www.y8.com/");
-			}
-		}
+//		if (buttonDifferentGame.handleEvent(event_, renderer))
+//		{
+//			smallLight.setRect(X_BUTTON_DIFFERENT_GAME_, Y_BUTTON_DIFFERENT_GAME_);
+//			smallLight.render(renderer);
+//
+//			if (event_->type == SDL_MOUSEBUTTONDOWN)
+//			{
+//				SDL_OpenURL("https://www.y8.com/");
+//			}
+//		}
 
 		SDL_RenderPresent(renderer);
 	}

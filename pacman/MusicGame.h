@@ -19,7 +19,7 @@ public:
     Mix_Chunk* getMusicLiveOut() const;
     Mix_Chunk*getMusicStartGame() const;
 
-    voi free();
+    void free();
 private:
     Mix_Music* music_background_;
 	Mix_Chunk* music_eat_dot_;

@@ -51,7 +51,7 @@ bool BaseObject::loadImage(string path, SDL_Renderer* renderer, SDL_Color* color
 	if (loadSurface != NULL)
 	{
 		SDL_SetColorKey(loadSurface, SDL_TRUE, SDL_MapRGB(loadSurface->format, colorKeyR, colorKeyG, colorKeyB)); //peter func
-		newTexture = SDL_CreateTextureFromSurface(renderer, loadSurface); //peter func
+		newTexture = SDL_CreateTextureFromSurface(renderer, loadSurface);
 		if (newTexture != NULL)
 		{
 			rect_.w = loadSurface->w;
