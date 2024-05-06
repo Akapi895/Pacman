@@ -14,7 +14,9 @@ public:
 
 	void setStartPacman(SDL_Renderer* renderer, SDL_Color* colorKey);
 
-	bool loadImage(string path, SDL_Renderer* renderer, bool isVertical = false, SDL_Color* colorKey = NULL);
+	bool loadImage(string path, SDL_Renderer* renderer,
+                bool isVertical = false, SDL_Color* colorKey = NULL);
+
 	void setClips(bool isVertical = false);
 	void render(SDL_Renderer* renderer);
 
