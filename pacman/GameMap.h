@@ -24,7 +24,7 @@ public:
 	TileMap() {;}
 	~TileMap() {;}
 
-private:
+//private:
 
 };
 

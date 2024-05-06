@@ -2,13 +2,13 @@
 
 void GameMap::loadMap(string nameMap)
 {
-	ifstream inFile(nameMap);
+	ifstream File(nameMap);
 	for (int i = 0; i < MAX_MAP_Y; i++)
 	{
 		for (int j = 0; j < MAX_MAP_X; j++)
 		{
 			int numberTile;
-			inFile >> numberTile;
+			File >> numberTile;
 			game_map_.tiles_number_[i][j] = numberTile;
 			if (numberTile != 0 && numberTile != 9 && numberTile != 5)
 			{
@@ -23,7 +23,7 @@ void GameMap::loadMap(string nameMap)
 	game_map_.max_y = MAX_MAP_Y * TILE_SIZE;
 
 	game_map_.file_name_ = nameMap;
-	inFile.close();
+	File.close();
 }
 
 void GameMap::loadTiles(SDL_Renderer* renderer)
