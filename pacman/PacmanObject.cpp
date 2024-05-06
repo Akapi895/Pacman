@@ -128,48 +128,19 @@ void PacmanObject::handleInput(SDL_Event events)
 {
 	if (events.type == SDL_KEYDOWN)
 	{
-		switch (events.key.keysym.sym)
-		{
-		case SDLK_RIGHT:
-		{
+		switch (events.key.keysym.sym) {
+		case SDLK_RIGHT: case SDLK_d:
 			direction_input_ = GO_RIGHT;
 			break;
-		}
-		case SDLK_d:
-		{
-			direction_input_ = GO_RIGHT;
-			break;
-		}
-		case SDLK_LEFT:
-		{
+		case SDLK_LEFT: case SDLK_a:
 			direction_input_ = GO_LEFT;
 			break;
-		}
-		case SDLK_a:
-		{
-			direction_input_ = GO_LEFT;
-			break;
-		}
-		case SDLK_UP:
-		{
+		case SDLK_UP: case SDLK_w:
 			direction_input_ = GO_UP;
 			break;
-		}
-		case SDLK_w:
-		{
-			direction_input_ = GO_UP;
-			break;
-		}
-		case SDLK_DOWN:
-		{
+		case SDLK_DOWN: case SDLK_s:
 			direction_input_ = GO_DOWN;
 			break;
-		}
-		case SDLK_s:
-		{
-			direction_input_ = GO_DOWN;
-			break;
-		}
 		default:
 			break;
 		}
@@ -178,7 +149,7 @@ void PacmanObject::handleInput(SDL_Event events)
 
 void PacmanObject::setDirection()
 {
-	direction_current_ = GO_RIGHT;
+	direction_current_ = GO_NONE;//GO_RIGHT
 }
 
 void PacmanObject::setDirection(GameMap& checkMap, SDL_Renderer* renderer)
@@ -192,47 +163,51 @@ void PacmanObject::setDirection(GameMap& checkMap, SDL_Renderer* renderer)
 		return;
 	}
 
-	if (direction_current_ != GO_DOWN && direction_input_ == GO_DOWN)
-	{
+	if (direction_current_ != GO_DOWN && direction_input_ == GO_DOWN) {
 		y_pos_ += VEL_PACMAN_;
-		if (!checkToMap(checkMap))
-		{
+
+		if (!checkToMap(checkMap)) {
 			direction_current_ = GO_DOWN;
 			updateImageDirect(renderer);
 		}
+
 		y_pos_ -= VEL_PACMAN_;
 		return;
 	}
-	if (direction_current_ != GO_UP && direction_input_ == GO_UP)
-	{
+
+	if (direction_current_ != GO_UP && direction_input_ == GO_UP) {
 		y_pos_ -= VEL_PACMAN_;
-		if (!checkToMap(checkMap))
-		{
+
+		if (!checkToMap(checkMap)) {
 			direction_current_ = GO_UP;
 			updateImageDirect(renderer);
 		}
+
 		y_pos_ += VEL_PACMAN_;
 		return;
 	}
-	if (direction_current_ != GO_LEFT && direction_input_ == GO_LEFT)
-	{
+
+	if (direction_current_ != GO_LEFT && direction_input_ == GO_LEFT) {
 		x_pos_ -= VEL_PACMAN_;
-		if (!checkToMap(checkMap))
-		{
+
+		if (!checkToMap(checkMap)) {
 			direction_current_ = GO_LEFT;
 			updateImageDirect(renderer);
 		}
+
 		x_pos_ += VEL_PACMAN_;
 		return;
 	}
-	if (direction_current_ != GO_RIGHT && direction_input_ == GO_RIGHT)
-	{
+
+	if (direction_current_ != GO_RIGHT && direction_input_ == GO_RIGHT) {
 		x_pos_ += VEL_PACMAN_;
+
 		if (!checkToMap(checkMap))
 		{
 			direction_current_ = GO_RIGHT;
 			updateImageDirect(renderer);
 		}
+
 		x_pos_ -= VEL_PACMAN_;
 		return;
 	}
@@ -240,32 +215,28 @@ void PacmanObject::setDirection(GameMap& checkMap, SDL_Renderer* renderer)
 
 void PacmanObject::pacmanMove(GameMap& checkMap)
 {
-	if (direction_current_ == GO_DOWN)
-	{
+	if (direction_current_ == GO_DOWN) {
 		y_pos_ += VEL_PACMAN_;
 		if (checkToMap(checkMap))
 		{
 			y_pos_ -= VEL_PACMAN_;
 		}
 	}
-	if (direction_current_ == GO_LEFT)
-	{
+	if (direction_current_ == GO_LEFT) {
 		x_pos_ -= VEL_PACMAN_;
 		if (checkToMap(checkMap))
 		{
 			x_pos_ += VEL_PACMAN_;
 		}
 	}
-	if (direction_current_ == GO_RIGHT)
-	{
+	if (direction_current_ == GO_RIGHT) {
 		x_pos_ += VEL_PACMAN_;
 		if (checkToMap(checkMap))
 		{
 			x_pos_ -= VEL_PACMAN_;
 		}
 	}
-	if (direction_current_ == GO_UP)
-	{
+	if (direction_current_ == GO_UP) {
 		y_pos_ -= VEL_PACMAN_;
 		if (checkToMap(checkMap))
 		{

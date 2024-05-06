@@ -10,7 +10,8 @@ bool initData(SDL_Window* window, SDL_Renderer*& renderer,
 	}
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 	window = SDL_CreateWindow(GAME_TITLE.c_str(), SDL_WINDOWPOS_UNDEFINED,
-		SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+            SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+
 	if (window == NULL) success = false;
 	else
 	{
@@ -54,7 +55,7 @@ bool initData(SDL_Window* window, SDL_Renderer*& renderer,
 void startGame(SDL_Renderer* renderer, SDL_Event* event_)
 {
 	BaseObject startBackground;
-	startBackground.loadImage("image/start_game_.png", renderer);
+	startBackground.loadImage("image/menu pacman.png", renderer);//start_game_
 
 	MouseButton buttonStartGame;
 	buttonStartGame.setPositionObject(X_BUTTON_START_GAME_, Y_BUTTON_START_GAME_, WIDTH_BUTTON_, HEIGHT_BUTTON_);
@@ -138,7 +139,7 @@ void startGame(SDL_Renderer* renderer, SDL_Event* event_)
 
 			if (event_->type == SDL_MOUSEBUTTONDOWN)
 			{
-				SDL_OpenURL("https:///gamevui.vn/");
+				SDL_OpenURL("https://www.y8.com/");
 			}
 		}
 
@@ -187,7 +188,7 @@ void stopAndResumeGame(SDL_Event* event_, Timer& timeGame, MusicGame& gameMusic,
 		}
 
 	}
-	
+
 }
 
 void loadImageAndSetPosition(BaseObject& gBackground, BaseObject& pacmanLivesImage, BaseObject& smallLight, SDL_Renderer* renderer,
