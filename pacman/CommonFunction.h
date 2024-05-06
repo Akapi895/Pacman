@@ -95,9 +95,6 @@ bool checkCollision(const SDL_Rect& a, const SDL_Rect& b);
 #define X_BUTTON_OUT_INTRODUCTION_ 530
 #define Y_BUTTON_OUT_INTRODUCTION_ 560
 
-#define X_BUTTON_DIFFERENT_GAME_ 870
-#define Y_BUTTON_DIFFERENT_GAME_ 510
-
 #define X_BUTTON_RETURN_GAME_ 335
 #define Y_BUTTON_RETURN_GAME_ 540
 

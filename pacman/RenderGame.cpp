@@ -308,8 +308,8 @@ void renderImageRankScore( BaseObject& imageLossGame, vector<int> rankScore, SDL
 	smallLight.loadImage("image/small_light.png", renderer, &COLOR_KEY_BLACK_);
 
 	MouseButton buttonReturnRank;
-	buttonReturnRank.setPositionObject(X_BUTTON_DIFFERENT_GAME_ - 330, Y_BUTTON_DIFFERENT_GAME_ - 80,
-                                    WIDTH_BUTTON_, HEIGHT_BUTTON_);
+//	buttonReturnRank.setPositionObject(X_BUTTON_DIFFERENT_GAME_ - 330, Y_BUTTON_DIFFERENT_GAME_ - 80,
+//                                    WIDTH_BUTTON_, HEIGHT_BUTTON_);
 
 	TextObject scoreText;
 	scoreText.setColor(WHITE_);
@@ -334,7 +334,7 @@ void renderImageRankScore( BaseObject& imageLossGame, vector<int> rankScore, SDL
 		}
 		if (buttonReturnRank.handleEvent(event_, renderer))
 		{
-			smallLight.setRect(X_BUTTON_DIFFERENT_GAME_ - 330, Y_BUTTON_DIFFERENT_GAME_ - 80);
+//			smallLight.setRect(X_BUTTON_DIFFERENT_GAME_ - 330, Y_BUTTON_DIFFERENT_GAME_ - 80);
 			smallLight.render(renderer);
 			if (event_->type == SDL_MOUSEBUTTONDOWN)
 			{
