@@ -5,7 +5,7 @@
 1714715791 g:\cpp\game\game_btl\pacman\baseobject.h
 	"CommonFunction.h"
 
-1714988952 g:\cpp\game\game_btl\pacman\commonfunction.h
+1714991549 g:\cpp\game\game_btl\pacman\commonfunction.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_ttf.h>
@@ -66,7 +66,7 @@
 	"PacmanObject.h"
 	"GameMap.h"
 
-1714988973 source:g:\cpp\game\game_btl\pacman\rendergame.cpp
+1714991532 source:g:\cpp\game\game_btl\pacman\rendergame.cpp
 	"RenderGame.h"
 
 1714988368 g:\cpp\game\game_btl\pacman\rendergame.h
@@ -78,7 +78,7 @@
 1714986208 g:\cpp\game\game_btl\pacman\textobject.h
 	"CommonFunction.h"
 
-1714988864 source:g:\cpp\game\game_btl\pacman\settinggame.cpp
+1714990419 source:g:\cpp\game\game_btl\pacman\settinggame.cpp
 	"SettingGame.h"
 
 1714833956 g:\cpp\game\game_btl\pacman\settinggame.h

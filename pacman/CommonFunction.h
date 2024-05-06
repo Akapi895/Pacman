@@ -40,7 +40,7 @@ const int TIME_PLAY = 300; // 5 phút
 
 const int SIZE_TEXT_ = 28;
 
-const int NUMBER_LIVES_ = 3;
+const int NUMBER_LIVES_ = 0;
 
 const int MAX_NUMBER_MAP_ = 5; // check
 
@@ -86,14 +86,17 @@ bool checkCollision(const SDL_Rect& a, const SDL_Rect& b);
 #define WIDTH_BUTTON_SOUND_ 64
 #define HEIGHT_BUTTON_SOUND_ 64
 
-#define X_BUTTON_START_GAME_ 810
-#define Y_BUTTON_START_GAME_ 310
+#define X_BUTTON_START_GAME_ 825
+#define Y_BUTTON_START_GAME_ 373
 
-#define X_BUTTON_INTRODUCTION_ 830
-#define Y_BUTTON_INTRODUCTION_ 415
+#define X_BUTTON_INTRODUCTION_ 825
+#define Y_BUTTON_INTRODUCTION_ 469
 
 #define X_BUTTON_OUT_INTRODUCTION_ 530
 #define Y_BUTTON_OUT_INTRODUCTION_ 560
+
+#define X_BACK_FROM_RANK_ 540
+#define Y_BACK_FROM_RANK_ 430
 
 #define X_BUTTON_RETURN_GAME_ 335
 #define Y_BUTTON_RETURN_GAME_ 540

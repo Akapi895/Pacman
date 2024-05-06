@@ -42,9 +42,14 @@
 		<Unit filename="MouseButton.h" />
 		<Unit filename="MusicGame.cpp" />
 		<Unit filename="MusicGame.h" />
+		<Unit filename="PacManDie.cpp" />
 		<Unit filename="PacManDie.h" />
 		<Unit filename="PacmanObject.cpp" />
 		<Unit filename="PacmanObject.h" />
+		<Unit filename="PetObject.cpp" />
+		<Unit filename="PetObject.h" />
+		<Unit filename="RenderGame.cpp" />
+		<Unit filename="RenderGame.h" />
 		<Unit filename="SettingGame.cpp" />
 		<Unit filename="SettingGame.h" />
 		<Unit filename="TextObject.cpp" />

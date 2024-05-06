@@ -67,7 +67,6 @@ void startGame(SDL_Renderer* renderer, SDL_Event* event_)
 	buttonOutIntroduction.setPositionObject(X_BUTTON_OUT_INTRODUCTION_, Y_BUTTON_OUT_INTRODUCTION_, WIDTH_BUTTON_, HEIGHT_BUTTON_);
 
 	MouseButton buttonDifferentGame;
-//	buttonDifferentGame.setPositionObject(X_BUTTON_DIFFERENT_GAME_, Y_BUTTON_DIFFERENT_GAME_, WIDTH_BUTTON_, HEIGHT_BUTTON_);
 
 	BaseObject smallLight;
 	smallLight.loadImage("image/small_light.png", renderer);
