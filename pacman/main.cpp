@@ -9,6 +9,8 @@ int main(int argc, char* args[])
 	int mapNumber = 1;
 	int score = 0;
 	bool winGame = false;
+	int cntMusicBackground = 0;
+
 	do {
 		bool newGame = false;
 		bool isQuitGame = false;
@@ -18,6 +20,7 @@ int main(int argc, char* args[])
 
 		MusicGame gameMusic;
 		gameMusic.loadMusic();
+
 		Mix_PlayMusic(gameMusic.getMusicBackground(), -1);
 
 		if (Mix_PausedMusic() == 1)
@@ -35,7 +38,8 @@ int main(int argc, char* args[])
 		MouseButton buttonStopSound;
 		bool stopSound = false;
 
-		loadImageAndSetPosition(gBackground, pacmanLivesImage, smallLight, gRenderer, buttonStopMusic, buttonStopSound, gameMap, mapNumber);
+		loadImageAndSetPosition(gBackground, pacmanLivesImage, smallLight,
+                          gRenderer, buttonStopMusic, buttonStopSound, gameMap, mapNumber);
 		int numberItems = gameMap.getNumberItems();
 
 		PacmanObject pacman;

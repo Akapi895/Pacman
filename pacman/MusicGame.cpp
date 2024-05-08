@@ -16,16 +16,14 @@ MusicGame::~MusicGame() {
 }
 
 void MusicGame::loadMusic() {
-    music_background_  = Mix_LoadMUS("music_/music_background.wav");
-
-
-	music_eat_dot_     = Mix_LoadWAV("music_/music_eat_dot.wav");
-	music_eat_big_dot_ = Mix_LoadWAV("music_/music_eat_big_dot.wav");
-	music_die_         = Mix_LoadWAV("music_/music_die.wav");
-	music_win_game_    = Mix_LoadWAV("music_/music_win_game.wav");
-	music_time_out_    = Mix_LoadWAV("music_/music_time_out.wav");
-	music_live_out_    = Mix_LoadWAV("music_/music_live_out.wav");
-	music_start_game_  = Mix_LoadWAV("music_/music_start_game.wav");
+    music_background_  = Mix_LoadMUS("music/music_background.wav");
+	music_eat_dot_     = Mix_LoadWAV("music/music_eat_dot.wav");
+	music_eat_big_dot_ = Mix_LoadWAV("music/music_eat_big_dot.wav");
+	music_die_         = Mix_LoadWAV("music/music_die.wav");
+	music_win_game_    = Mix_LoadWAV("music/music_win_game.wav");
+	music_time_out_    = Mix_LoadWAV("music/music_time_out.wav");
+	music_live_out_    = Mix_LoadWAV("music/music_live_out.mp3");
+	music_start_game_  = Mix_LoadWAV("music/music_start_game.wav");
 }
 
 Mix_Music* MusicGame::getMusicBackground() const {
