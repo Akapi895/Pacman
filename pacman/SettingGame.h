@@ -14,6 +14,7 @@
 #include "MouseButton.h"
 
 bool initData(SDL_Window* window, SDL_Renderer*& renderer, TTF_Font*& fontText);
+
 void startGame(SDL_Renderer* renderer, SDL_Event* event_);
 
 void stopAndResumeGame(SDL_Event* event_, Timer& timeGame, MusicGame& gameMusic, bool & stopSound, bool& newGame);
@@ -23,7 +24,7 @@ void loadImageAndSetPosition(BaseObject& gBackground, BaseObject& pacmanLivesIma
                              MouseButton& buttonStopSound, GameMap& gameMap, const int& mapNumber);
 
 void settingPacmanAndPets(SDL_Renderer* renderer, PacmanObject& pacman,
-                        PetObject* pets, const int& numberItems, const int& score);
+                            PetObject* pets, const int& numberItems, const int& score);
 
 void pacmanDoing(PacmanObject& pacman, GameMap& gameMap, SDL_Renderer* renderer, MusicGame* gameMusic);
 

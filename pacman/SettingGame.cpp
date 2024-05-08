@@ -55,7 +55,7 @@ bool initData(SDL_Window* window, SDL_Renderer*& renderer,
 void startGame(SDL_Renderer* renderer, SDL_Event* event_)
 {
 	BaseObject startBackground;
-	startBackground.loadImage("image/menu pacman.png", renderer);//start_game_
+	startBackground.loadImage("image/menu pacman.png", renderer);
 
 	MouseButton buttonStartGame;
 	buttonStartGame.setPositionObject(X_BUTTON_START_GAME_, Y_BUTTON_START_GAME_, WIDTH_BUTTON_, HEIGHT_BUTTON_);
@@ -130,18 +130,6 @@ void startGame(SDL_Renderer* renderer, SDL_Event* event_)
 				}
 			}
 		}
-
-//		if (buttonDifferentGame.handleEvent(event_, renderer))
-//		{
-//			smallLight.setRect(X_BUTTON_DIFFERENT_GAME_, Y_BUTTON_DIFFERENT_GAME_);
-//			smallLight.render(renderer);
-//
-//			if (event_->type == SDL_MOUSEBUTTONDOWN)
-//			{
-//				SDL_OpenURL("https://www.y8.com/");
-//			}
-//		}
-
 		SDL_RenderPresent(renderer);
 	}
 }
@@ -152,7 +140,7 @@ void stopAndResumeGame(SDL_Event* event_, Timer& timeGame, MusicGame& gameMusic,
 	{
 		exit(1);
 	}
-	if (event_->key.keysym.sym == SDLK_p && SDL_GetModState() & KMOD_CTRL)
+	if (event_->key.keysym.sym == SDLK_p)
 	{
 		timeGame.paused();
 
@@ -162,6 +150,7 @@ void stopAndResumeGame(SDL_Event* event_, Timer& timeGame, MusicGame& gameMusic,
 			isStopSound = true;
 			stopSound = false;
 		}
+
 		statusSound(stopSound, gameMusic);
 		while (true)
 		{
@@ -170,7 +159,7 @@ void stopAndResumeGame(SDL_Event* event_, Timer& timeGame, MusicGame& gameMusic,
 			{
 				exit(1);
 			}
-			if (event_->key.keysym.sym == SDLK_r && SDL_GetModState() & KMOD_CTRL)
+			if (event_->key.keysym.sym == SDLK_r)
 			{
 				break;
 			}
@@ -180,6 +169,7 @@ void stopAndResumeGame(SDL_Event* event_, Timer& timeGame, MusicGame& gameMusic,
 				return;
 			}
 		}
+
 		timeGame.unpaused();
 		if (isStopSound == false)
 		{
@@ -190,12 +180,14 @@ void stopAndResumeGame(SDL_Event* event_, Timer& timeGame, MusicGame& gameMusic,
 
 }
 
-void loadImageAndSetPosition(BaseObject& gBackground, BaseObject& pacmanLivesImage, BaseObject& smallLight, SDL_Renderer* renderer,
-	MouseButton& buttonStopMusic, MouseButton& buttonStopSound, GameMap& gameMap, const int& mapNumber)
+void loadImageAndSetPosition(BaseObject& gBackground, BaseObject& pacmanLivesImage,
+                             BaseObject& smallLight, SDL_Renderer* renderer,
+                             MouseButton& buttonStopMusic, MouseButton& buttonStopSound,
+                             GameMap& gameMap, const int& mapNumber)
 {
 	gBackground.loadImage("image/background" + to_string(mapNumber) + ".png", renderer);
 	pacmanLivesImage.loadImage("image/pacman_lives.png", renderer);
-	smallLight.loadImage("image/small_light64.png", renderer, &COLOR_KEY_WHITE_);
+	//smallLight.loadImage("image/smalldot.png", renderer, &COLOR_KEY_WHITE_);
 
 	buttonStopMusic.setPositionObject(X_BUTTON_STOP_MUSIC_, Y_BUTTON_STOP_MUSIC_, WIDTH_BUTTON_SOUND_, HEIGHT_BUTTON_SOUND_);
 	buttonStopSound.setPositionObject(X_BUTTON_STOP_SOUND_, Y_BUTTON_STOP_SOUND_, WIDTH_BUTTON_SOUND_, HEIGHT_BUTTON_SOUND_);
@@ -252,7 +244,6 @@ void settingTime(Timer& timer)
 
 	if (timeCurrent < timePerFrame)
 	{
-		//cout << timeCurrent << endl;
 		SDL_Delay(timePerFrame - timeCurrent);
 	}
 }
@@ -299,8 +290,9 @@ void statusSound(bool& stopSound, MusicGame& gameMusic)
 	}
 }
 
-void checkCollisionPacmanWithPets(PacmanObject& pacman, SDL_Renderer* renderer, GameMap& renderMap,
-	BaseObject& renderBackGround, PetObject* pets, int& numberDie, MusicGame& gameMusic)
+void checkCollisionPacmanWithPets(PacmanObject& pacman, SDL_Renderer* renderer,
+                                  GameMap& renderMap, BaseObject& renderBackGround,
+                                  PetObject* pets, int& numberDie, MusicGame& gameMusic)
 {
 	for (int i = 0; i < NUMBER_PET_; i++)
 	{
@@ -316,7 +308,7 @@ void checkCollisionPacmanWithPets(PacmanObject& pacman, SDL_Renderer* renderer, 
 }
 
 void solveCollision(PacmanObject& pacman, SDL_Renderer* renderer,
-	GameMap& renderMap, BaseObject& renderBackground, PetObject* pets)
+                GameMap& renderMap, BaseObject& renderBackground, PetObject* pets)
 {
 	const SDL_Rect pacmanDiePos = pacman.getPos();
 	const int goType = pacman.getGoType();

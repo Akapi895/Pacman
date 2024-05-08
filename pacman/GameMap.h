@@ -4,7 +4,7 @@
 #include "CommonFunction.h"
 #include "BaseObject.h"
 
-#define MAP_TILES_IMAGE_ 10 //???
+#define MAP_TILES_IMAGE_ 10
 
 struct Map
 {
