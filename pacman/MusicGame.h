@@ -9,8 +9,8 @@ public:
     ~MusicGame();
 
     void loadMusic();
-    Mix_Music* getMusicBackground() const;
 
+    Mix_Music* getMusicBackground() const;
     Mix_Chunk* getMusicEatDot() const;
     Mix_Chunk* getMusicEatBigDot() const;
     Mix_Chunk* getMusicDie() const;

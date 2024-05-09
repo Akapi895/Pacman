@@ -42,19 +42,19 @@ const int SIZE_TEXT_ = 28;
 
 const int NUMBER_LIVES_ = 3;
 
-const int MAX_NUMBER_MAP_ = 5; // check
+const int MAX_NUMBER_MAP_ = 5;
 
 #define START_PACMAN_X_ 13
 #define START_PACMAN_Y_ 4
 #define PACMAN_FRAME_  8
-#define VEL_PACMAN_ 8 //la sao
+#define VEL_PACMAN_ 8
 
 #define PACMAN_DIE_FRAME_ 10
 
 #define START_PET_X_ 13
 #define START_PET_Y_ 8
 #define PET_FRAME_ 4
-#define VEL_PET_ 8 //???
+#define VEL_PET_ 8
 
 #define PIXEL_CLIP_ 32
 #define MAX_MAP_X 35
