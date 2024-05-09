@@ -338,7 +338,7 @@ void settingWinGame(MusicGame& gameMusic, SDL_Renderer* renderer, BaseObject& ba
 }
 
 void settingLostGame(MusicGame& gameMusic, SDL_Renderer* renderer, const int numberDie, int& score,
-	TTF_Font*& fontText, TextObject scoreGame, SDL_Event* event_)
+                        TTF_Font*& fontText, TextObject scoreGame, SDL_Event* event_)
 {
 	Mix_PauseMusic();
 	if (NUMBER_LIVES_ - numberDie == 0)

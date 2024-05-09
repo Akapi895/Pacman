@@ -117,7 +117,8 @@ void renderSlectDifficulty(SDL_Renderer* renderer, SDL_Event* event_, bool& isQu
 	}
 }
 
-void renderPacmanLiveText(const int& numberLives, TTF_Font*& fontText, TextObject& livesText, SDL_Renderer* renderer, BaseObject& livesImage)
+void renderPacmanLiveText(const int& numberLives, TTF_Font*& fontText, TextObject& livesText,
+                          SDL_Renderer* renderer, BaseObject& livesImage)
 {
 	livesText.setText("LIVES:");
 	livesText.loadFromRenderText(fontText, renderer);

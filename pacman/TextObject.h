@@ -7,12 +7,12 @@ enum TextColor
 {
 	BLACK_ = 0,
 	WHITE_ = 1,
-	RED_ = 2,
+	RED_   = 2,
 	GREEN_ = 3,
 	PURPLE_ = 4,
 	YELLOW_ = 5,
-	BLUE_ = 6,
-	PINK_ = 7
+	BLUE_  = 6,
+	PINK_  = 7
 };
 
 class TextObject

@@ -94,6 +94,7 @@ int main(int argc, char* args[])
 				}
 				pacman.handleInput(gEvent);
 			}
+
 			renderLineStop(gRenderer, stopSound);
 
 			gameMap.drawMap(gRenderer);
