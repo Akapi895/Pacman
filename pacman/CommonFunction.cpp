@@ -15,6 +15,19 @@ bool checkCollision(const SDL_Rect& a, const SDL_Rect& b)
 	topB = b.y;
 	bottomB = b.y + b.h;
 
+
+//	if (topA > bottomB) {
+//        if (rightA - leftB >= 4) return false;
+//        else if (leftA - rightB >= 4) return false;
+//        else return true;
+//	}
+//
+//	if (topB > bottomA) {
+//        if (rightB - leftA >= 4) return false;
+//        else if (leftB - rightA >= 4) return false;
+//        else return true;
+//	}
+
 	if (bottomA < topB)
 	{
 		return false;
@@ -30,10 +43,11 @@ bool checkCollision(const SDL_Rect& a, const SDL_Rect& b)
 		return false;
 	}
 
-	if (leftA > rightB)
+	else if (leftA > rightB)
 	{
 		return false;
 	}
+
 
 	return true;
 }
