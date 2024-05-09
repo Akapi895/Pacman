@@ -140,7 +140,7 @@ void stopAndResumeGame(SDL_Event* event_, Timer& timeGame, MusicGame& gameMusic,
 	{
 		exit(1);
 	}
-	if (event_->key.keysym.sym == SDLK_p)
+	if (event_->key.keysym.sym == SDLK_SPACE)
 	{
 		timeGame.paused();
 
@@ -159,7 +159,7 @@ void stopAndResumeGame(SDL_Event* event_, Timer& timeGame, MusicGame& gameMusic,
 			{
 				exit(1);
 			}
-			if (event_->key.keysym.sym == SDLK_r)
+			if (event_->key.keysym.sym == SDLK_SPACE)
 			{
 				break;
 			}
