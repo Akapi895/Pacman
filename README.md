@@ -17,13 +17,13 @@ a) Entities
    
 b) Game play, collision and explosion
 
-- Nhiệm vụ:
+Nhiệm vụ:
 
  + Điều khiển Pacman di chuyển qua mê cung và ăn hết tất cả các dot trong thời gian quy định (5 phút).
  + Tránh va chạm với Villians, mỗi lần va chạm sẽ khiến bạn mất đi một mạng quý giá.
  + Di chuyển Pacman một cách thông minh qua những mê cung ngày càng phức tạp khi bạn tiến lên các cấp độ cao hơn.
 
-- Cơ chế trò chơi:
+Cơ chế trò chơi:
 
  + Mỗi cấp độ mang đến một bố cục mê cung độc đáo với độ khó khác nhau.
  + Thời gian là yếu tố then chốt, hãy tận dụng từng bước di chuyển và tránh lãng phí những giây phút quý báu.
@@ -48,4 +48,4 @@ c) Độ khó của game cũng được phân chia thành 4 mức độ:
 - Lập kế hoạch di chuyển cẩn thận để giảm thiểu ngõ cụt và tối đa hóa hiệu quả.
 - Giữ tập trung và tỉnh táo, vì tốc độ sẽ tăng dần với mỗi cấp độ.
 
-# Hãy chinh phục thử thách và trở thành bậc thầy Pacman!
+## Hãy chinh phục thử thách và trở thành bậc thầy Pacman!
