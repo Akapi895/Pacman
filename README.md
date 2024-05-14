@@ -4,6 +4,7 @@ Mã sinh viên: 23021709 - Phạm Anh Tuấn
 Người chơi sẽ nhập vai thành cậu bạn Pacman để thu thập các dot để qua màn, với những lựa chọn độ khó khác nhau, hãy giữ tập trung cao độ nhất có thể để giành được điểm cao và ghi tên mình vào Bảng xếp hạng nhé!
 
 2. Description
+
 a) Entities
  - Pacman là nhân vật chính của trò chơi. Pacman có thể di chuyển theo 4 hướng trái/phải/lên/xuống.
  - Pac dot: các đối tượng mà Pacman phải ăn hết trước thời gian định sẵn để có thể qua level.
