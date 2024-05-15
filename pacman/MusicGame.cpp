@@ -22,7 +22,7 @@ void MusicGame::loadMusic() {
 	music_die_         = Mix_LoadWAV("music/music_die.wav");
 	music_win_game_    = Mix_LoadWAV("music/music_win_game.wav");
 	music_time_out_    = Mix_LoadWAV("music/music_time_out.wav");
-	music_live_out_    = Mix_LoadWAV("music/music_live_out.mp3");
+	music_live_out_    = Mix_LoadWAV("music/music_time_out.wav");
 	music_start_game_  = Mix_LoadWAV("music/music_start_game.mp3");
 }
 

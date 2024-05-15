@@ -32,7 +32,7 @@ const int COLOR_KEY_B = 180;
 const int TILE_SIZE = 32;
 const string GAME_TITLE = "PACMAN_23021709";
 
-const int FRAME_PER_SECOND = 8;
+const int FRAME_PER_SECOND = 14;
 
 const int NUMBER_PET_ = 4; //ảo ma
 

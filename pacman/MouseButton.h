@@ -9,7 +9,7 @@ class MouseButton
 {
 public:
 	MouseButton();
-	~MouseButton();
+	~MouseButton() { ; }
 
 	void setPositionObject(int posx, int posy, int height, int weight);
 	bool handleEvent(SDL_Event* event_, SDL_Renderer* renderer);

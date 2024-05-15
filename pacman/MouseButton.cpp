@@ -6,11 +6,6 @@ MouseButton::MouseButton()
 	object_position_.y = 0;
 }
 
-MouseButton::~MouseButton()
-{
-
-}
-
 void MouseButton::setPositionObject(int posx, int posy, int width, int height)
 {
 	object_position_.x = posx;
