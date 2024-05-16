@@ -129,16 +129,16 @@ void PacmanObject::handleInput(SDL_Event events)
 	if (events.type == SDL_KEYDOWN)
 	{
 		switch (events.key.keysym.sym) {
-		case SDLK_RIGHT: case SDLK_d:
+		case SDLK_d:
 			direction_input_ = GO_RIGHT;
 			break;
-		case SDLK_LEFT: case SDLK_a:
+		case SDLK_a:
 			direction_input_ = GO_LEFT;
 			break;
-		case SDLK_UP: case SDLK_w:
+		case SDLK_w:
 			direction_input_ = GO_UP;
 			break;
-		case SDLK_DOWN: case SDLK_s:
+		case SDLK_s:
 			direction_input_ = GO_DOWN;
 			break;
 		default:
