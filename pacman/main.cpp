@@ -1,15 +1,14 @@
 #include "SettingGame.h"
 #include <time.h>
 
-int main(int argc, char* args[])
+int main(int argc, char* argv[])
 {
 	initData(gWindow, gRenderer, gFontText);
 
-	int levelDifficult = 2;
+	int levelDifficult = 5;
 	int mapNumber = 1;
 	int score = 0;
 	bool winGame = false;
-	int cntMusicBackground = 0;
 
 	do {
 		bool newGame = false;
@@ -81,6 +80,7 @@ int main(int argc, char* args[])
 					mapNumber = 1;
 					pacman.setScore(0);
 					winGame = false;
+					settingLostGame(gameMusic, gRenderer, numberDie, score, gFontText, scoreGame, &gEvent);
 				}
 
 				stopAndResumeGame(&gEvent, timeGame, gameMusic, stopSound, newGame);

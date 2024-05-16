@@ -139,6 +139,17 @@ void PetObject::autoAiInputDirect(GameMap& checkMap, PacmanObject& pacman) {
 	map<int, int> candidatesGoType;
 	SDL_Rect pacmanPos = pacman.getPos();
 	//int distanceMin = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
+    if (direction_current_ != GO_UP)
+    {
+        y_pos_ += VEL_PACMAN_;
+        if (!checkToMap(checkMap))
+        {
+            int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
+//            candidatesGoType.insert({ distance_, GO_DOWN });
+            candidatesGoType[distance_] = GO_DOWN;
+        }
+        y_pos_ -= VEL_PACMAN_;
+    }
 
 	if (direction_current_ != GO_LEFT)
 	{
@@ -146,7 +157,8 @@ void PetObject::autoAiInputDirect(GameMap& checkMap, PacmanObject& pacman) {
 		if (!checkToMap(checkMap))
 		{
 			int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
-			candidatesGoType.insert({ distance_, GO_RIGHT });
+//			candidatesGoType.insert({ distance_, GO_RIGHT });
+			candidatesGoType[distance_] = GO_RIGHT;
 		}
 		x_pos_ -= VEL_PACMAN_;
 	}
@@ -157,21 +169,10 @@ void PetObject::autoAiInputDirect(GameMap& checkMap, PacmanObject& pacman) {
 		if (!checkToMap(checkMap))
 		{
 			int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
-			candidatesGoType.insert({ distance_, GO_LEFT });
+//			candidatesGoType.insert({ distance_, GO_LEFT });
+			candidatesGoType[distance_] = GO_LEFT;
 		}
 		x_pos_ += VEL_PACMAN_;
-	}
-
-	if (direction_current_ != GO_UP)
-	{
-		y_pos_ += VEL_PACMAN_;
-		if (!checkToMap(checkMap))
-		{
-			int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
-			candidatesGoType.insert({ distance_, GO_DOWN });
-		}
-		y_pos_ -= VEL_PACMAN_;
-
 	}
 
 	if (direction_current_ != GO_DOWN)
@@ -180,7 +181,8 @@ void PetObject::autoAiInputDirect(GameMap& checkMap, PacmanObject& pacman) {
 		if (!checkToMap(checkMap))
 		{
 			int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
-			candidatesGoType.insert({ distance_, GO_UP });
+//			candidatesGoType.insert({ distance_, GO_UP });
+			candidatesGoType[distance_] = GO_UP;
 		}
 		y_pos_ += VEL_PACMAN_;
 	}
@@ -189,10 +191,10 @@ void PetObject::autoAiInputDirect(GameMap& checkMap, PacmanObject& pacman) {
 	{
 		switch (direction_current_)
 		{
-		case GO_UP: direction_auto_ = GO_DOWN; break;
-		case GO_DOWN: direction_auto_ = GO_UP; break;
-		case GO_RIGHT: direction_auto_ = GO_LEFT; break;
-		case GO_LEFT: direction_auto_ = GO_RIGHT; break;
+            case GO_UP: direction_auto_ = GO_DOWN; break;
+            case GO_DOWN: direction_auto_ = GO_UP; break;
+            case GO_RIGHT: direction_auto_ = GO_LEFT; break;
+            case GO_LEFT: direction_auto_ = GO_RIGHT; break;
 		}
 	}
 	else

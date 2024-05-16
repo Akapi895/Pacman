@@ -60,7 +60,7 @@ void renderSlectDifficulty(SDL_Renderer* renderer, SDL_Event* event_, bool& isQu
 		SDL_PollEvent(event_);
 		if (event_->type == SDL_QUIT)
 		{
-			exit(5);
+			exit(10);
 		}
 		if (buttonEasyGame.handleEvent(event_, renderer))
 		{

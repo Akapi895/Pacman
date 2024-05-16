@@ -13,6 +13,7 @@
 #include <vector>
 #include <map>
 #include <algorithm>
+
 using namespace std;
 
 static SDL_Window* gWindow = NULL;
@@ -36,7 +37,7 @@ const int FRAME_PER_SECOND = 14;
 
 const int NUMBER_PET_ = 4; //ảo ma
 
-const int TIME_PLAY = 300; // 5 phút
+const int TIME_PLAY = 240;
 
 const int SIZE_TEXT_ = 28;
 

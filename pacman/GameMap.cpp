@@ -37,11 +37,11 @@ void GameMap::loadTiles(SDL_Renderer* renderer)
 
 void GameMap::drawMap(SDL_Renderer* renderer)
 {
-	int x1 = 0;
-	int x2 = 0;
-
-	int y1 = 0;
-	int y2 = 0;
+//	int x1 = 0;
+//	int x2 = 0;
+//
+//	int y1 = 0;
+//	int y2 = 0;
 
 	int mapX = 0;
 	int mapY = 0;
