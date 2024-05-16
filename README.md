@@ -1,4 +1,4 @@
-**# GAME_BTL PACMAN**
+# GAME_BTL PACMAN
 **1. Introduction**
 
 Mã sinh viên: _23021709_ - Phạm Anh Tuấn
@@ -40,16 +40,15 @@ _Game được chia thành 4 mức độ khó khác nhau:_
 
 **3. Thao tác phím**
 
-![image](https://github.com/Akapi895/game_btl/assets/83953516/403d6461-12d3-45b5-a8ec-e0017faa019a)
-
-![image](https://github.com/Akapi895/game_btl/assets/83953516/bc09e989-8b9a-46d2-946b-9a7bffc838fe)
-
+![asdw](https://github.com/Akapi895/game_btl/assets/83953516/71f80dc2-a664-478b-b4e8-8e6ef799ac26)
+![pause](https://github.com/Akapi895/game_btl/assets/83953516/92064709-8b32-4f91-b693-237dfc8098ec)
 
 **4. Mẹo để giành chiến thắng:**
 
 - Lập kế hoạch di chuyển cẩn thận để giảm thiểu ngõ cụt và tối đa hóa hiệu quả.
 - Giữ tập trung và tỉnh táo, vì tốc độ sẽ tăng dần với mỗi cấp độ.
 
-**#Các kỹ thuật sử dụng**
+## Kiến thức đã sử dụng
+abcd
 
-**## Hãy chinh phục thử thách và trở thành bậc thầy Pacman!**
+## Tự đánh giá
