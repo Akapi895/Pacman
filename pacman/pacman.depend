@@ -5,7 +5,7 @@
 1714715791 g:\cpp\game\game_btl\pacman\baseobject.h
 	"CommonFunction.h"
 
-1715829791 g:\cpp\game\game_btl\pacman\commonfunction.h
+1716013837 g:\cpp\game\game_btl\pacman\commonfunction.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_ttf.h>
@@ -15,6 +15,7 @@
 	<fstream>
 	<vector>
 	<map>
+	<queue>
 	<algorithm>
 
 1715244607 source:g:\cpp\game\game_btl\pacman\commonfunction.cpp
@@ -48,7 +49,7 @@
 	"BaseObject.h"
 	"GameMap.h"
 
-1714960899 source:g:\cpp\game\game_btl\pacman\pacmanobject.cpp
+1715830933 source:g:\cpp\game\game_btl\pacman\pacmanobject.cpp
 	"PacmanObject.h"
 
 1714986212 g:\cpp\game\game_btl\pacman\pacmanobject.h
@@ -60,11 +61,13 @@
 1715828397 source:g:\cpp\game\game_btl\pacman\petobject.cpp
 	"PetObject.h"
 
-1714987728 g:\cpp\game\game_btl\pacman\petobject.h
+1716013820 g:\cpp\game\game_btl\pacman\petobject.h
 	"CommonFunction.h"
 	"BaseObject.h"
 	"PacmanObject.h"
 	"GameMap.h"
+	<unordered_set>
+	<limits>
 
 1715826258 source:g:\cpp\game\game_btl\pacman\rendergame.cpp
 	"RenderGame.h"
