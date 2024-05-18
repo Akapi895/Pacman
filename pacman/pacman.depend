@@ -58,8 +58,9 @@
 	"GameMap.h"
 	"MusicGame.h"
 
-1715828397 source:g:\cpp\game\game_btl\pacman\petobject.cpp
+1716013806 source:g:\cpp\game\game_btl\pacman\petobject.cpp
 	"PetObject.h"
+	<algorithm>
 
 1716013820 g:\cpp\game\game_btl\pacman\petobject.h
 	"CommonFunction.h"

@@ -1,69 +1,78 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <queue>
 
 using namespace std;
 
-#define int long long
 
-const int MAXN = 105;
-const int oo = 1e18 + 7;
+struct Node {
+    int x;
+    int y;
+};
 
-int N, M, K;
-int dist[MAXN][MAXN], trace[MAXN][MAXN];
+bool isValid(int rows, int cols, int x, int y) {
+    return x >= 0 && x < rows && y >= 0 && y < cols;
+}
 
-void Floyd() {
-    for (int k = 1; k <= N; ++k) {
-        for (int u = 1; u <= N; ++u) {
-            for (int v = 1; v <= N; ++v) {
-                if (dist[u][v] > dist[u][k] + dist[k][v]) {
-                    dist[u][v] = dist[u][k] + dist[k][v];
-                    trace[u][v] = trace[u][k];
+vector<Node> findShortestPathBFS(vector<vector<int>>& matrix,
+                                 int start_node_x, int start_node_y) {
+    int rows = matrix.size();
+    int cols = matrix[0].size();
+
+    // Create a dictionary to store visited nodes and their parents
+    vector<vector<bool>> visited(rows, vector<bool>(cols, false));
+    vector<vector<Node>> parents(rows, vector<Node>(cols, {-1, -1}));
+
+    // Initialize the queue for BFS
+    queue<Node> q;
+    q.push({start_node_x, start_node_y});
+    visited[start_node_x][start_node_y] = true;
+
+    // BFS loop to explore neighbors
+    while (!q.empty()) {
+        Node current_node = q.front();
+        q.pop();
+
+        int current_x = current_node.x;
+        int current_y = current_node.y;
+
+        // Check if the current node is the goal (another node with value 00)
+        if (matrix[current_x][current_y] == 00 && (current_x, current_y) != (start_node_x, start_node_y)) {
+            // Reconstruct the path from the goal node to the starting node
+            vector<Node> path;
+            Node node = current_node;
+            while (node != (start_node_x, start_node_y)) {
+                path.push_back(node);
+                node = parents[node.x][node.y];
+            }
+            path.push_back(start_node_x, start_node_y); // Add the starting node
+            reverse(path.begin(), path.end());
+            return path;
+        }
+
+        // Explore neighbors in all directions (up, down, left, right)
+        for (int dx = -1; dx <= 1; ++dx) {
+            for (int dy = -1; dy <= 1; ++dy) {
+                int new_x = current_x + dx;
+                int new_y = current_y + dy;
+
+                if (isValid(rows, cols, new_x, new_y) && !visited[new_x][new_y] && matrix[new_x][new_y] == 00) {
+                    visited[new_x][new_y] = true;
+                    parents[new_x][new_y] = {current_x, current_y};
+                    q.push({new_x, new_y});
                 }
             }
         }
     }
+
+    // No path found between nodes with value 00
+    return {};
 }
 
-vector <int> TRACE(int u, int v) {
-    vector <int> ANS;
-    ANS.push_back(u);
-    while (u != v) {
-        u = trace[u][v];
-        ANS.push_back(u);
-    }
-    return ANS;
-}
+int main() {
+    freopen("floyd.inp", "r", stdin);
+    freopen("floyd.out", "w", stdout);
 
-main() {
-    cin >> N >> M >> K;
-    for (int i = 1; i <= N; ++i) {
-        for (int j = 1; j <= N; ++j)
-            dist[i][j] = +oo;
-        dist[i][i] = 0;
-    }
 
-    // Gọi dist[i][j] là đường đi ngắn nhất từ i đến j
-
-    for (int i = 1; i <= M; ++i) {
-        int u, v, c;
-        cin >> u >> v >> c;
-        dist[u][v] = min(dist[u][v], c);
-        dist[v][u] = min(dist[v][u], c);
-        trace[u][v] = v;
-        trace[v][u] = u;
-    }
-
-    Floyd();
-
-    for (int i = 1; i <= K; ++i) {
-        int type, u, v;
-        cin >> type >> u >> v;
-        if (type == 0) cout << dist[u][v] << '\n';
-        else {
-            vector <int> path = TRACE(u, v);
-            cout << path.size() << ' ';
-            for (auto &v: path) cout << v << ' ';
-            cout << '\n';
-        }
-    }
     return 0;
 }
