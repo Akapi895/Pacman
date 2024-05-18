@@ -32,7 +32,9 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Unit filename="ThuatToanA.cpp" />
+		<Unit filename="ThuatToanA.out" />
+		<Unit filename="nothing.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

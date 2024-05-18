@@ -1,7 +1,6 @@
 # depslib dependency file v1.0
-1716047634 source:g:\cpp\game\game_btl\thuattoana\thuattoana.cpp
+1716052444 source:g:\cpp\game\game_btl\thuattoana\thuattoana.cpp
 	<bits/stdc++.h>
-	<iostream>
-	<vector>
-	<queue>
+
+1716052452 source:g:\cpp\game\game_btl\thuattoana\nothing.cpp
 
