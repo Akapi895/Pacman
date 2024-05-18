@@ -217,6 +217,7 @@ void pacmanDoing(PacmanObject& pacman, GameMap& gameMap, SDL_Renderer* renderer,
 	pacman.render(renderer);
 }
 
+int a = 0;
 void petDoing(PetObject* pets, GameMap& gameMap, SDL_Renderer* renderer, PacmanObject& pacman, const int& levelDifficult)
 {
 	for (int i = 0; i < NUMBER_PET_; i++)
@@ -224,7 +225,11 @@ void petDoing(PetObject* pets, GameMap& gameMap, SDL_Renderer* renderer, PacmanO
 		int randomAutoDirect = rand() % levelDifficult;
 		if (randomAutoDirect % levelDifficult == 0)
 		{
-			pets[i].autoAiInputDirect(gameMap, pacman);
+		    //debug voi a
+			if (a <= 2) {
+                pets[i].autoAiInputDirect(gameMap, pacman); a++;
+			}
+			else pets[i].autoInputDirect(gameMap);
 		}
 		else
 		{

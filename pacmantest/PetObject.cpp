@@ -217,8 +217,8 @@ int PetObject::getDirectionToPos(int targetX, int targetY) {
         return GO_LEFT;
     }
 }
-//
-//void PetObject::autoAiInputDirect(GameMap& checkMap, PacmanObject& pacman) {
+
+void PetObject::autoAiInputDirect(GameMap& checkMap, PacmanObject& pacman) {
 //    // Get the ghost's current position
 //    SDL_Rect ghostPos = getRect();
 //
@@ -233,29 +233,43 @@ int PetObject::getDirectionToPos(int targetX, int targetY) {
 //
 //    // Find the shortest path to Pacman using BFS
 //    vector<pair<int, int>> path = findShortestPathBFS(checkMap, checkTileNumber, map1, {ghostPos.x, ghostPos.y}, {pacman.getPos().x, pacman.getPos().y});
-//
-//    // If a path is found, follow the next step in the path
-//    if (!path.empty()) {
-//        int nextX = path[0].first;
-//        int nextY = path[0].second;
-//
-//        // Check if the next step is a valid move
-//        if (checkToMap(checkMap, nextX, nextY)) {
-//            // Update the ghost's direction based on the next step
-//            switch (getDirectionToPos(nextX, nextY)) {
-//                case GO_UP: direction_auto_ = GO_UP; break;
-//                case GO_DOWN: direction_auto_ = GO_DOWN; break;
-//                case GO_LEFT: direction_auto_ = GO_LEFT; break;
-//                case GO_RIGHT: direction_auto_ = GO_RIGHT; break;
-//            }
-//
-//            // Remove the followed step from the path
-//            path.erase(path.begin());
-//        }
-//    }
-//    return;
-//}
-//
+
+    SDL_Rect ghostPos = getRect();
+
+    // Retrieve the map pointer
+    Map* checkTileNumber = checkMap.getMap();
+    vector<vector<int>> map1;
+    for (int i = 1; i <= 20; ++i) {
+        vector<int> tmp;
+        for (int j = 1; j <= 35; ++j) tmp.push_back(checkTileNumber->tiles_number_[i][j]);
+        map1.push_back(tmp);
+    }
+
+    // Find the shortest path to Pacman using Dijkstra
+    vector<pair<int, int>> path = findShortestPathDijkstra(checkMap, checkTileNumber, map1, {ghostPos.x, ghostPos.y}, {pacman.getPos().x, pacman.getPos().y});
+
+    // If a path is found, follow the next step in the path
+    if (!path.empty()) {
+        int nextX = path[0].first;
+        int nextY = path[0].second;
+
+        // Check if the next step is a valid move
+        if (checkToMap(checkMap, nextX, nextY)) {
+            // Update the ghost's direction based on the next step
+            switch (getDirectionToPos(nextX, nextY)) {
+                case GO_UP: direction_auto_ = GO_UP; break;
+                case GO_DOWN: direction_auto_ = GO_DOWN; break;
+                case GO_LEFT: direction_auto_ = GO_LEFT; break;
+                case GO_RIGHT: direction_auto_ = GO_RIGHT; break;
+            }
+
+            // Remove the followed step from the path
+            //path.erase(path.begin());
+        }
+    }
+    return;
+}
+
 
 vector<pair<int, int>> PetObject::findShortestPathDijkstra(GameMap& checkMap, Map* checkTileNumber,
                                                            vector<vector<int>>& map1, pair<int, int> startPos, pair<int, int> endPos) {
@@ -330,9 +344,9 @@ vector<pair<int, int>> PetObject::findShortestPathDijkstra(GameMap& checkMap, Ma
 int PetObject::getCost(int tileType) {
     // Example: Assign different costs for different tile types
     switch (tileType) {
-      case 0: // Open space (low cost)
+      case 0: // Open space
         return 1;
-      case 1: // Wall (impassable)
+      case 1: // Wall
         return numeric_limits<int>::max();
       case 2: // Water (high cost)
         return 5;
@@ -341,77 +355,77 @@ int PetObject::getCost(int tileType) {
     }
   }
 
-void PetObject::autoAiInputDirect(GameMap& checkMap, PacmanObject& pacman) {
-	map<int, int> candidatesGoType;
-	SDL_Rect pacmanPos = pacman.getPos();
-	//int distanceMin = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
-    if (direction_current_ != GO_UP)
-    {
-        y_pos_ += VEL_PACMAN_;
-        if (!checkToMap(checkMap))
-        {
-            int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
-//            candidatesGoType.insert({ distance_, GO_DOWN });
-            candidatesGoType[distance_] = GO_DOWN;
-        }
-        y_pos_ -= VEL_PACMAN_;
-    }
-
-	if (direction_current_ != GO_LEFT)
-	{
-		x_pos_ += VEL_PACMAN_;
-		if (!checkToMap(checkMap))
-		{
-			int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
-//			candidatesGoType.insert({ distance_, GO_RIGHT });
-			candidatesGoType[distance_] = GO_RIGHT;
-		}
-		x_pos_ -= VEL_PACMAN_;
-	}
-
-	if (direction_current_ != GO_RIGHT)
-	{
-		x_pos_ -= VEL_PACMAN_;
-		if (!checkToMap(checkMap))
-		{
-			int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
-//			candidatesGoType.insert({ distance_, GO_LEFT });
-			candidatesGoType[distance_] = GO_LEFT;
-		}
-		x_pos_ += VEL_PACMAN_;
-	}
-
-	if (direction_current_ != GO_DOWN)
-	{
-		y_pos_ -= VEL_PACMAN_;
-		if (!checkToMap(checkMap))
-		{
-			int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
-//			candidatesGoType.insert({ distance_, GO_UP });
-			candidatesGoType[distance_] = GO_UP;
-		}
-		y_pos_ += VEL_PACMAN_;
-	}
-
-	if (candidatesGoType.size() == 0)
-	{
-		switch (direction_current_)
-		{
-            case GO_UP: direction_auto_ = GO_DOWN; break;
-            case GO_DOWN: direction_auto_ = GO_UP; break;
-            case GO_RIGHT: direction_auto_ = GO_LEFT; break;
-            case GO_LEFT: direction_auto_ = GO_RIGHT; break;
-		}
-	}
-	else
-	{
-		for (auto i : candidatesGoType)
-		{
-			direction_auto_ = i.second;
-			break;
-		}
-	}
-}
+//void PetObject::autoAiInputDirect(GameMap& checkMap, PacmanObject& pacman) {
+//	map<int, int> candidatesGoType;
+//	SDL_Rect pacmanPos = pacman.getPos();
+//	//int distanceMin = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
+//    if (direction_current_ != GO_UP)
+//    {
+//        y_pos_ += VEL_PACMAN_;
+//        if (!checkToMap(checkMap))
+//        {
+//            int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
+////            candidatesGoType.insert({ distance_, GO_DOWN });
+//            candidatesGoType[distance_] = GO_DOWN;
+//        }
+//        y_pos_ -= VEL_PACMAN_;
+//    }
+//
+//	if (direction_current_ != GO_LEFT)
+//	{
+//		x_pos_ += VEL_PACMAN_;
+//		if (!checkToMap(checkMap))
+//		{
+//			int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
+////			candidatesGoType.insert({ distance_, GO_RIGHT });
+//			candidatesGoType[distance_] = GO_RIGHT;
+//		}
+//		x_pos_ -= VEL_PACMAN_;
+//	}
+//
+//	if (direction_current_ != GO_RIGHT)
+//	{
+//		x_pos_ -= VEL_PACMAN_;
+//		if (!checkToMap(checkMap))
+//		{
+//			int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
+////			candidatesGoType.insert({ distance_, GO_LEFT });
+//			candidatesGoType[distance_] = GO_LEFT;
+//		}
+//		x_pos_ += VEL_PACMAN_;
+//	}
+//
+//	if (direction_current_ != GO_DOWN)
+//	{
+//		y_pos_ -= VEL_PACMAN_;
+//		if (!checkToMap(checkMap))
+//		{
+//			int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
+////			candidatesGoType.insert({ distance_, GO_UP });
+//			candidatesGoType[distance_] = GO_UP;
+//		}
+//		y_pos_ += VEL_PACMAN_;
+//	}
+//
+//	if (candidatesGoType.size() == 0)
+//	{
+//		switch (direction_current_)
+//		{
+//            case GO_UP: direction_auto_ = GO_DOWN; break;
+//            case GO_DOWN: direction_auto_ = GO_UP; break;
+//            case GO_RIGHT: direction_auto_ = GO_LEFT; break;
+//            case GO_LEFT: direction_auto_ = GO_RIGHT; break;
+//		}
+//	}
+//	else
+//	{
+//		for (auto i : candidatesGoType)
+//		{
+//			direction_auto_ = i.second;
+//			break;
+//		}
+//	}
+//}
 
 void PetObject::setDirection(GameMap& checkMap, SDL_Renderer* renderer) {
 	if (x_pos_ % TILE_SIZE != 0 || y_pos_ % TILE_SIZE != 0)

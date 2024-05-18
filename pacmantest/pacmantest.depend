@@ -60,7 +60,7 @@
 1715829548 g:\cpp\game\game_btl\pacmantest\textobject.h
 	"CommonFunction.h"
 
-1716013512 g:\cpp\game\game_btl\pacmantest\petobject.h
+1716014057 g:\cpp\game\game_btl\pacmantest\petobject.h
 	"CommonFunction.h"
 	"BaseObject.h"
 	"PacmanObject.h"
@@ -107,6 +107,7 @@
 1715139042 source:g:\cpp\game\game_btl\pacmantest\timer.cpp
 	"Timer.h"
 
-1716010682 source:g:\cpp\game\game_btl\pacmantest\petobject.cpp
+1716014511 source:g:\cpp\game\game_btl\pacmantest\petobject.cpp
 	"PetObject.h"
+	<algorithm>
 

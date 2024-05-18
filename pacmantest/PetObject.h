@@ -29,9 +29,9 @@ public:
     vector<pair<int, int>> findShortestPathBFS(GameMap& checkMap, Map* checkTileNumber,
                                             vector<vector<int>>& map, pair<int, int> startPos, pair<int, int> endPos);
 
+    vector<pair<int, int>> findShortestPathDijkstra(GameMap& checkMap, Map* checkTileNumber, vector<vector<int>>& map, pair<int, int> startPos, pair<int, int> endPos);
+
 	void autoInputDirect(GameMap& checkMap);
-	vector<pair<int, int>> findShortestPathDijkstra(GameMap& checkMap, Map* checkTileNumber,
-                                                 vector<vector<int>>& map1, pair<int, int> startPos, pair<int, int> endPos);
 
 	void autoAiInputDirect(GameMap& checkMap, PacmanObject& pacman);
 	void setDirection(GameMap& checkMap, SDL_Renderer* renderer);
