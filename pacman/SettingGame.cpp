@@ -209,11 +209,11 @@ void settingPacmanAndPets(SDL_Renderer* renderer, PacmanObject& pacman, PetObjec
 	}
 }
 
-void pacmanDoing(PacmanObject& pacman, GameMap& gameMap, SDL_Renderer* renderer, MusicGame* gameMusic)
+void pacmanDoing(PacmanObject& pacman, GameMap& gameMap, SDL_Renderer* renderer, MusicGame* gameMusic, const int& difficultyLevel)
 {
 	pacman.setDirection(gameMap, renderer);
 	pacman.pacmanMove(gameMap);
-	pacman.checkToItem(gameMap, gameMusic);
+	pacman.checkToItem(gameMap, gameMusic, difficultyLevel);
 	pacman.render(renderer);
 }
 

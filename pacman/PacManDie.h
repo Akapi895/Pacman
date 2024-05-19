@@ -15,7 +15,7 @@ public:
 	void setClips(bool isVertical = false);
 
     void setImage(int goType, const SDL_Rect& pacmanDiePos, SDL_Renderer* renderer,
-                   GameMap& renderMap, BaseObject& renderBackground);
+                GameMap& renderMap, BaseObject& renderBackground);
     void setPos(SDL_Rect pos);
 
     void render(SDL_Renderer* renderer);

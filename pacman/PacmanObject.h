@@ -15,7 +15,7 @@ public:
 	void setStartPacman(SDL_Renderer* renderer, SDL_Color* colorKey);
 
 	bool loadImage(string path, SDL_Renderer* renderer,
-                bool isVertical = false, SDL_Color* colorKey = NULL);
+                    bool isVertical = false, SDL_Color* colorKey = NULL);
 
 	void setClips(bool isVertical = false);
 	void render(SDL_Renderer* renderer);
@@ -26,6 +26,7 @@ public:
 	void pacmanMove(GameMap& checkMap);
 	bool checkToMap(GameMap& checkMap);
 	void checkToItem(GameMap& checkMap, MusicGame* musicEatItems);
+	void checkToItem(GameMap& checkMap, MusicGame* musicEatItems, int difficultyLevel);
 
 	void setDirection();
 	void setDirection(GameMap& checkMap, SDL_Renderer* renderer);

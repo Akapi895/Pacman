@@ -96,9 +96,8 @@ int main(int argc, char* argv[])
 			}
 
 			renderLineStop(gRenderer, stopSound);
-
 			gameMap.drawMap(gRenderer);
-			pacmanDoing(pacman, gameMap, gRenderer, &gameMusic);
+			pacmanDoing(pacman, gameMap, gRenderer, &gameMusic, levelDifficult);
 			petDoing(pets, gameMap, gRenderer, pacman, levelDifficult);
 
 			score = pacman.getScore();

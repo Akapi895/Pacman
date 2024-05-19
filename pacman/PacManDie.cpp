@@ -14,15 +14,15 @@ bool PacmanDie::loadImage(string path, SDL_Renderer* renderer, bool isVertical, 
 {
     bool success = BaseObject::loadImage(path, renderer, colorKey);
     if (success) {
-        if (isVertical == false) {
-            width_frame_ = rect_.w / PACMAN_DIE_FRAME_;
-            height_frame_ = rect_.h;
-            setClips();
-        }
-        else {
+        if (isVertical == true) {
             width_frame_ = rect_.w;
             height_frame_ = rect_.h / PACMAN_DIE_FRAME_;
             setClips(isVertical);
+        }
+        else {
+            width_frame_ = rect_.w / PACMAN_DIE_FRAME_;
+            height_frame_ = rect_.h;
+            setClips();
         }
     }
     return success;
@@ -65,18 +65,27 @@ void PacmanDie::render(SDL_Renderer* renderer)
 }
 
 void PacmanDie::setImage(int goType, const SDL_Rect& pacmanDiePos, SDL_Renderer* renderer,
-	GameMap& renderMap, BaseObject& renderBackground)
-{
-	if (goType == GO_DOWN)
-		loadImage("image/pacman_die_down.png", renderer, false, &COLOR_KEY_WHITE_);
-	else if (goType == GO_UP)
-        loadImage("image/pacman_die_up.png", renderer, false, &COLOR_KEY_WHITE_);
-	else if (goType == GO_RIGHT)
-		loadImage("image/pacman_die_right.png", renderer, true, &COLOR_KEY_WHITE_);
-	else if (goType == GO_LEFT)
-		loadImage("image/pacman_die_left.png", renderer, true, &COLOR_KEY_WHITE_);
+                          GameMap& renderMap, BaseObject& renderBackground) {
+      // Load image based on goType
+    if (goType == GO_DOWN) {
+        if (!loadImage("image/pacman_die_down.png", renderer)) {
+            return;
+        }
+    } else if (goType == GO_UP) {
+        if (!loadImage("image/pacman_die_up.png", renderer)) {
+            return;
+        }
+    } else if (goType == GO_RIGHT) {
+        if (!loadImage("image/pacman_die_right.png", renderer, true)) {
+            return;
+        }
+    } else if (goType == GO_LEFT) {
+        if (!loadImage("image/pacman_die_left.png", renderer, true)) {
+            return;
+        }
+    }
 
-	setPos(pacmanDiePos);
+    setPos(pacmanDiePos);
 
 	for (int i = 0; i < PACMAN_DIE_FRAME_; i++) {
 		SDL_RenderClear(renderer);

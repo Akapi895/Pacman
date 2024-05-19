@@ -17,13 +17,13 @@ PacmanObject::PacmanObject() {
 
 
 void PacmanObject::setStartPacman(SDL_Renderer* renderer, SDL_Color* colorKey) {
-	x_pos_ = START_PACMAN_X_ * PIXEL_CLIP_;
-	y_pos_ = START_PACMAN_Y_ * PIXEL_CLIP_;
+  x_pos_ = START_PACMAN_X_ * PIXEL_CLIP_;
+  y_pos_ = START_PACMAN_Y_ * PIXEL_CLIP_;
 
-	direction_current_ = GO_NONE; //GO_RIGHT
-	direction_input_ = GO_NONE; //GO_RIGHT
+  direction_current_ = GO_NONE;
+  direction_input_ = GO_NONE;
 
-	loadImage("image/pacman_right.png", renderer, false, colorKey);
+  loadImage("image/pacman_right.png", renderer, false, colorKey);
 }
 
 void PacmanObject::setNumberItems(int numberItems) {
@@ -46,9 +46,7 @@ int PacmanObject::getNumberItems() const {
 	return number_items;
 }
 
-bool PacmanObject::loadImage(string path, SDL_Renderer* renderer,
-                             bool isVertical, SDL_Color* colorKey)
-{
+bool PacmanObject::loadImage(string path, SDL_Renderer* renderer, bool isVertical, SDL_Color* colorKey) {
 	bool success = BaseObject::loadImage(path, renderer, colorKey);
 	if (success == true)
 	{
@@ -68,8 +66,7 @@ bool PacmanObject::loadImage(string path, SDL_Renderer* renderer,
 	return success;
 }
 
-void PacmanObject::setClips(bool isVertical)
-{
+void PacmanObject::setClips(bool isVertical) {
 	if (isVertical == false)
 	{
 		for (int i = 0; i < PACMAN_FRAME_; i++)
@@ -107,25 +104,16 @@ void PacmanObject::updateImageDirect(SDL_Renderer* renderer)
 {
 	SDL_Color colorKey = { 255, 255, 255 };
 	if (direction_current_ == GO_DOWN)
-	{
 		loadImage("image//pacman_down.png", renderer, true, &colorKey);
-	}
 	else if (direction_current_ == GO_UP)
-	{
 		loadImage("image//pacman_up.png", renderer, true, &colorKey);
-	}
 	else if (direction_current_ == GO_LEFT)
-	{
 		loadImage("image//pacman_left.png", renderer, false, &colorKey);
-	}
 	else if (direction_current_ == GO_RIGHT)
-	{
 		loadImage("image//pacman_right.png", renderer, false, &colorKey);
-	}
 }
 
-void PacmanObject::handleInput(SDL_Event events)
-{
+void PacmanObject::handleInput(SDL_Event events) {
 	if (events.type == SDL_KEYDOWN)
 	{
 		switch (events.key.keysym.sym) {
@@ -147,137 +135,110 @@ void PacmanObject::handleInput(SDL_Event events)
 	}
 }
 
-void PacmanObject::setDirection()
-{
-	direction_current_ = GO_NONE;//GO_RIGHT
+void PacmanObject::setDirection() {
+	direction_current_ = GO_NONE;
 }
 
-void PacmanObject::setDirection(GameMap& checkMap, SDL_Renderer* renderer)
-{
-	if ((x_pos_ % TILE_SIZE != 0 || y_pos_ % TILE_SIZE != 0)
-		&& ((direction_current_ == GO_DOWN && direction_input_ != GO_UP)
-			|| (direction_current_ == GO_UP && direction_input_ != GO_DOWN)
-			|| (direction_current_ == GO_RIGHT && direction_input_ != GO_LEFT)
-			|| (direction_current_ == GO_LEFT && direction_input_ != GO_RIGHT)))
-	{
-		return;
-	}
+void PacmanObject::setDirection(GameMap& checkMap, SDL_Renderer* renderer) {
 
-	if (direction_current_ != GO_DOWN && direction_input_ == GO_DOWN) {
-		y_pos_ += VEL_PACMAN_;
+    if (x_pos_ % TILE_SIZE != 0 || y_pos_ % TILE_SIZE != 0) {
+        return;
+    }
+    switch (direction_input_) {
+    case GO_DOWN:
+        y_pos_ += VEL_PACMAN_;
+        if (!checkToMap(checkMap) && direction_current_ != GO_DOWN) {
+            direction_current_ = GO_DOWN;
+            updateImageDirect(renderer);
+        }
+        y_pos_ -= VEL_PACMAN_;
+        return;
+    case GO_UP:
+        y_pos_ -= VEL_PACMAN_;
+        if (!checkToMap(checkMap) && direction_current_ != GO_UP) {
+            direction_current_ = GO_UP;
+            updateImageDirect(renderer);
+        }
+        y_pos_ += VEL_PACMAN_;
+        return;
+    case GO_LEFT:
+        x_pos_ -= VEL_PACMAN_;
+        if (!checkToMap(checkMap) && direction_current_ != GO_LEFT) {
+            direction_current_ = GO_LEFT;
+            updateImageDirect(renderer);
+        }
+        x_pos_ += VEL_PACMAN_;
+        return;
+    case GO_RIGHT:
+        x_pos_ += VEL_PACMAN_;
+        if (!checkToMap(checkMap) && direction_current_ != GO_RIGHT) {
+            direction_current_ = GO_RIGHT;
+            updateImageDirect(renderer);
+        }
+        x_pos_ -= VEL_PACMAN_;
+        return;
 
-		if (!checkToMap(checkMap)) {
-			direction_current_ = GO_DOWN;
-			updateImageDirect(renderer);
-		}
-
-		y_pos_ -= VEL_PACMAN_;
-		return;
-	}
-
-	if (direction_current_ != GO_UP && direction_input_ == GO_UP) {
-		y_pos_ -= VEL_PACMAN_;
-
-		if (!checkToMap(checkMap)) {
-			direction_current_ = GO_UP;
-			updateImageDirect(renderer);
-		}
-
-		y_pos_ += VEL_PACMAN_;
-		return;
-	}
-
-	if (direction_current_ != GO_LEFT && direction_input_ == GO_LEFT) {
-		x_pos_ -= VEL_PACMAN_;
-
-		if (!checkToMap(checkMap)) {
-			direction_current_ = GO_LEFT;
-			updateImageDirect(renderer);
-		}
-
-		x_pos_ += VEL_PACMAN_;
-		return;
-	}
-
-	if (direction_current_ != GO_RIGHT && direction_input_ == GO_RIGHT) {
-		x_pos_ += VEL_PACMAN_;
-
-		if (!checkToMap(checkMap))
-		{
-			direction_current_ = GO_RIGHT;
-			updateImageDirect(renderer);
-		}
-
-		x_pos_ -= VEL_PACMAN_;
-		return;
-	}
+    }
 }
 
-void PacmanObject::pacmanMove(GameMap& checkMap)
-{
-	if (direction_current_ == GO_DOWN) {
-		y_pos_ += VEL_PACMAN_;
-		if (checkToMap(checkMap))
-		{
-			y_pos_ -= VEL_PACMAN_;
-		}
-	}
-	if (direction_current_ == GO_LEFT) {
-		x_pos_ -= VEL_PACMAN_;
-		if (checkToMap(checkMap))
-		{
-			x_pos_ += VEL_PACMAN_;
-		}
-	}
-	if (direction_current_ == GO_RIGHT) {
-		x_pos_ += VEL_PACMAN_;
-		if (checkToMap(checkMap))
-		{
-			x_pos_ -= VEL_PACMAN_;
-		}
-	}
-	if (direction_current_ == GO_UP) {
-		y_pos_ -= VEL_PACMAN_;
-		if (checkToMap(checkMap))
-		{
-			y_pos_ += VEL_PACMAN_;
-		}
-	}
+void PacmanObject::pacmanMove(GameMap& checkMap) {
+    switch (direction_current_) {
+    case GO_DOWN:
+        y_pos_ += VEL_PACMAN_;
+        if (checkToMap(checkMap)) {
+        y_pos_ -= VEL_PACMAN_;
+        }
+        return;
+    case GO_LEFT:
+        x_pos_ -= VEL_PACMAN_;
+        if (checkToMap(checkMap)) {
+        x_pos_ += VEL_PACMAN_;
+        }
+        return;
+    case GO_RIGHT:
+        x_pos_ += VEL_PACMAN_;
+        if (checkToMap(checkMap)) {
+        x_pos_ -= VEL_PACMAN_;
+        }
+        return;
+    case GO_UP:
+        y_pos_ -= VEL_PACMAN_;
+        if (checkToMap(checkMap)) {
+        y_pos_ += VEL_PACMAN_;
+        }
+        return;
+    default:
+        return;
+    }
 }
 
-bool PacmanObject::checkToMap(GameMap& checkMap)
-{
-	int xPosImage1 = x_pos_ / TILE_SIZE;
-	int yPosImage1 = y_pos_ / TILE_SIZE;
+bool PacmanObject::checkToMap(GameMap& checkMap) {
+  // Check all four corners
+  int topLeftX = x_pos_ / TILE_SIZE;
+  int topLeftY = y_pos_ / TILE_SIZE;
 
-	int xPosImage2 = (x_pos_ + TILE_SIZE - 1) / TILE_SIZE;
-	int yPosImage2 = y_pos_ / TILE_SIZE;
+  int topRightX = (x_pos_ + width_frame_ - 1) / TILE_SIZE;
+  int topRightY = y_pos_ / TILE_SIZE;
 
-	int xPosImage3 = x_pos_ / TILE_SIZE;
-	int yPosImage3 = (y_pos_ + TILE_SIZE - 1) / TILE_SIZE;
+  int bottomLeftX = x_pos_ / TILE_SIZE;
+  int bottomLeftY = (y_pos_ + height_frame_ - 1) / TILE_SIZE;
 
-	int xPosImage4 = (x_pos_ + TILE_SIZE - 1) / TILE_SIZE;
-	int yPosImage4 = (y_pos_ + TILE_SIZE - 1) / TILE_SIZE;
+  int bottomRightX = (x_pos_ + width_frame_ - 1) / TILE_SIZE;
+  int bottomRightY = (y_pos_ + height_frame_ - 1) / TILE_SIZE;
 
-	Map* checkTileNumber = checkMap.getMap();
+  Map* checkTileNumber = checkMap.getMap();
 
-	if (checkTileNumber->tiles_number_[yPosImage1][xPosImage1] == TILE_WALL_
-		|| checkTileNumber->tiles_number_[yPosImage2][xPosImage2] == TILE_WALL_
-		|| checkTileNumber->tiles_number_[yPosImage3][xPosImage3] == TILE_WALL_
-		|| checkTileNumber->tiles_number_[yPosImage4][xPosImage4] == TILE_WALL_
-		|| checkTileNumber->tiles_number_[yPosImage1][xPosImage1] == TILE_WALL_2_
-		|| checkTileNumber->tiles_number_[yPosImage2][xPosImage2] == TILE_WALL_2_
-		|| checkTileNumber->tiles_number_[yPosImage3][xPosImage3] == TILE_WALL_2_
-		|| checkTileNumber->tiles_number_[yPosImage4][xPosImage4] == TILE_WALL_2_)
-	{
-		return true;
-	}
-
-	return false;
+  return (checkTileNumber->tiles_number_[topLeftY][topLeftX] == TILE_WALL_
+          || checkTileNumber->tiles_number_[topLeftY][topRightX] == TILE_WALL_
+          || checkTileNumber->tiles_number_[bottomLeftY][topLeftX] == TILE_WALL_
+          || checkTileNumber->tiles_number_[bottomLeftY][bottomRightX] == TILE_WALL_
+          || checkTileNumber->tiles_number_[topLeftY][topLeftX] == TILE_WALL_2_
+          || checkTileNumber->tiles_number_[topLeftY][topRightX] == TILE_WALL_2_
+          || checkTileNumber->tiles_number_[bottomLeftY][topLeftX] == TILE_WALL_2_
+          || checkTileNumber->tiles_number_[bottomLeftY][bottomRightX] == TILE_WALL_2_);
 }
 
-void PacmanObject::checkToItem(GameMap& checkMap, MusicGame* musicEatItems)
-{
+void PacmanObject::checkToItem(GameMap& checkMap, MusicGame* musicEatItems, int difficultyLevel) {
 	int xPosImage1 = x_pos_ / TILE_SIZE;
 	int yPosImage1 = y_pos_ / TILE_SIZE;
 
@@ -296,20 +257,19 @@ void PacmanObject::checkToItem(GameMap& checkMap, MusicGame* musicEatItems)
 		if (tileNumber == TILE_PAC_BIG_DOTS_)
 		{
 			Mix_PlayChannel(-1, musicEatItems->getMusicEatBigDot(), 0);
-			score_ += 25;
+			score_ += 50;
+			score_ += (5 - difficultyLevel + 1) * 5;
 			number_items--;
 		}
 		checkTileNumber->tiles_number_[yPosImage1][xPosImage1] = TILE_NONE_;
 	}
 }
 
-int PacmanObject::getGoType() const
-{
+int PacmanObject::getGoType() const {
 	return direction_current_;
 }
 
-SDL_Rect PacmanObject::getPos() const
-{
+SDL_Rect PacmanObject::getPos() const {
 	SDL_Rect posPacman;
 	posPacman.x = x_pos_;
 	posPacman.y = y_pos_;
