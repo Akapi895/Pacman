@@ -14,10 +14,11 @@ public:
 	SDL_Rect getRect() const;
 	SDL_Texture* getTexture() const;
 
-	virtual bool loadImage(string path, SDL_Renderer* renderer, SDL_Color* colorKey = NULL);
-	virtual void render(SDL_Renderer* renderer, const SDL_Rect* srcrect = NULL);
+	virtual bool loadImage(const std::string& path, SDL_Renderer* renderer, SDL_Color* colorKey = NULL);
+    virtual void render(SDL_Renderer* renderer, const SDL_Rect* sourceRect = NULL);
 
 	void free();
+
 protected:
 	SDL_Texture* texture_;
 	SDL_Rect rect_;

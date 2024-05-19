@@ -13,7 +13,7 @@ struct Map
 
 	int max_x = 0;
 	int max_y = 0;
-	int tiles_number_[MAX_MAP_Y][MAX_MAP_X];
+	std::vector<std::vector<int>> tiles_number_;
 	string file_name_ = "";
 
 };
@@ -24,7 +24,7 @@ public:
 	TileMap() {;}
 	~TileMap() {;}
 
-//private:
+private:
 
 };
 

@@ -1,37 +1,32 @@
 #include "BaseObject.h"
 
 
-BaseObject::BaseObject()
-{
-	texture_ = NULL;
-	rect_.x = 0;
-	rect_.y = 0;
-	rect_.w = 0;
-	rect_.h = 0;
+BaseObject::BaseObject() {
+    texture_ = NULL;
+    rect_.x = 0;
+    rect_.y = 0;
+    rect_.w = 0;
+    rect_.h = 0;
 }
 
-BaseObject::~BaseObject()
-{
-	free();
+BaseObject::~BaseObject() {
+    free();
 }
 
-void BaseObject::setRect(const int& x, const int& y)
-{
-	rect_.x = x;
-	rect_.y = y;
+void BaseObject::setRect(const int& x, const int& y) {
+    rect_.x = x;
+    rect_.y = y;
 }
 
-SDL_Rect BaseObject::getRect() const
-{
-	return rect_;
+SDL_Rect BaseObject::getRect() const {
+    return rect_;
 }
 
-SDL_Texture* BaseObject::getTexture() const
-{
-	return texture_;
+SDL_Texture* BaseObject::getTexture() const {
+    return texture_;
 }
 
-bool BaseObject::loadImage(string path, SDL_Renderer* renderer, SDL_Color* colorKey)
+bool BaseObject::loadImage(const std::string& path, SDL_Renderer* renderer, SDL_Color* colorKey)
 {
 	free();
 	SDL_Texture* newTexture = NULL;
