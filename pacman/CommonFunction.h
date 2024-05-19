@@ -36,9 +36,9 @@ const string GAME_TITLE = "PACMAN_23021709";
 
 const int FRAME_PER_SECOND = 14;
 
-const int NUMBER_PET_ = 4; //ảo ma
+const int NUMBER_PET_ = 4;
 
-const int TIME_PLAY = 240;
+const int TIME_PLAY = 200;
 
 const int SIZE_TEXT_ = 28;
 

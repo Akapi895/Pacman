@@ -26,7 +26,7 @@ bool renderStopMusic(BaseObject& smallLight, SDL_Event* event_, SDL_Renderer* re
 	return false;
 }
 
-void renderSlectDifficulty(SDL_Renderer* renderer, SDL_Event* event_, bool& isQuitGame, int& numberDifficult) {
+void renderSelectDifficulty(SDL_Renderer* renderer, SDL_Event* event_, bool& isQuitGame, int& numberDifficult) {
 	BaseObject imageSelectDifficulty;
 	imageSelectDifficulty.loadImage("image/selectDifficulty.png", renderer);
 

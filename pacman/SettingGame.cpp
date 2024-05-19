@@ -237,8 +237,7 @@ void petDoing(PetObject* pets, GameMap& gameMap, SDL_Renderer* renderer, PacmanO
 	}
 }
 
-void settingTime(Timer& timer)
-{
+void settingTime(Timer& timer) {
 	int timeCurrent = timer.getTicks();
 	int timePerFrame = 1000 / FRAME_PER_SECOND;
 

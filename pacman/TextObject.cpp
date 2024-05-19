@@ -20,18 +20,14 @@ TextObject::~TextObject()
 	free();
 }
 
-bool TextObject::loadFromRenderText(TTF_Font* font, SDL_Renderer* renderer)
-{
-	SDL_Surface* textSurface = TTF_RenderText_Solid(font, string_val_.c_str(), text_color_);
-	if (textSurface)
-	{
-		texture_ = SDL_CreateTextureFromSurface(renderer, textSurface);
-		width_ = textSurface->w;
-		height_ = textSurface->h;
-		SDL_FreeSurface(textSurface);
-	}
-
-	return texture_ != NULL;
+bool TextObject::loadFromRenderText(TTF_Font* font, SDL_Renderer* renderer) {
+    std::unique_ptr<SDL_Surface, SDL_Deleter<SDL_Surface>> textSurface(TTF_RenderText_Solid(font, string_val_.c_str(), text_color_));
+    if (textSurface) {
+        texture_ = SDL_CreateTextureFromSurface(renderer, textSurface.get());
+        width_ = textSurface->w;
+        height_ = textSurface->h;
+    }
+    return texture_ != NULL;
 }
 
 void TextObject::setColor(int red, int green, int blue)

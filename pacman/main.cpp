@@ -3,6 +3,8 @@
 
 int main(int argc, char* argv[])
 {
+    cerr << "Thanks for playing Pacman!\nHave a great dayyy";
+
 	initData(gWindow, gRenderer, gFontText);
 
 	int levelDifficult = 5;
@@ -10,7 +12,7 @@ int main(int argc, char* argv[])
 	int score = 0;
 	bool winGame = false;
 
-	do {
+	while(true) {
 		bool newGame = false;
 		bool isQuitGame = false;
 
@@ -48,7 +50,7 @@ int main(int argc, char* argv[])
 		if (winGame == false)
 		{
 			startGame(gRenderer, &gEvent);
-			renderSlectDifficulty(gRenderer, &gEvent, isQuitGame, levelDifficult);
+			renderSelectDifficulty(gRenderer, &gEvent, isQuitGame, levelDifficult);
 		}
 
 		Timer fpsTimer;
@@ -126,6 +128,7 @@ int main(int argc, char* argv[])
 				break;
 			}
 		}
-	} while (1);
+	}
+
 	return 0;
 }

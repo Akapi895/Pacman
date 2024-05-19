@@ -2,6 +2,14 @@
 #define TEXT_OBJECT_H
 
 #include "CommonFunction.h"
+#include <memory>
+
+template<typename T>
+struct SDL_Deleter {
+  void operator()(T* ptr) const {
+    SDL_FreeSurface(ptr);
+  }
+};
 
 enum TextColor
 {

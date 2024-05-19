@@ -6,7 +6,7 @@
 #include "BaseObject.h"
 #include "MouseButton.h"
 
-void renderSlectDifficulty(SDL_Renderer* renderer, SDL_Event* event_,
+void renderSelectDifficulty(SDL_Renderer* renderer, SDL_Event* event_,
                            bool& isQuitGame, int& numberDiffcult);
 
 void renderScoreText(const int& scoreGame, TTF_Font*& fontText,
