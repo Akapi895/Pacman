@@ -278,7 +278,7 @@ void statusSound(bool& stopSound, MusicGame& gameMusic)
 {
 	if (stopSound == false)
 	{
-		gameMusic.free();
+		gameMusic.freeResources();
 		stopSound = true;
 	}
 	else

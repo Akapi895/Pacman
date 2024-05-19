@@ -8,7 +8,7 @@ public:
     MusicGame();
     ~MusicGame();
 
-    void loadMusic();
+    bool loadMusic();
 
     Mix_Music* getMusicBackground() const;
     Mix_Chunk* getMusicEatDot() const;
@@ -17,10 +17,13 @@ public:
     Mix_Chunk* getWinGame() const;
     Mix_Chunk* getMusicTimeOut() const;
     Mix_Chunk* getMusicLiveOut() const;
-    Mix_Chunk*getMusicStartGame() const;
+    Mix_Chunk* getMusicStartGame() const;
 
-    void free();
+    void freeResources();
 private:
+    bool loadMusicFile(const std::string& filePath, Mix_Music** musicPtr);
+    bool loadChunkFile(const std::string& filePath, Mix_Chunk** musicPtr);
+
     Mix_Music* music_background_;
 	Mix_Chunk* music_eat_dot_;
 	Mix_Chunk* music_eat_big_dot_;

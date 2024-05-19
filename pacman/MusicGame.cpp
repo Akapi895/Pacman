@@ -12,18 +12,22 @@ MusicGame::MusicGame() {
 }
 
 MusicGame::~MusicGame() {
-    free();
+    freeResources();
 }
 
-void MusicGame::loadMusic() {
-    music_background_  = Mix_LoadMUS("music/music_background.mp3");
-	music_eat_dot_     = Mix_LoadWAV("music/music_eat_dot.wav");
-	music_eat_big_dot_ = Mix_LoadWAV("music/music_eat_big_dot.wav");
-	music_die_         = Mix_LoadWAV("music/music_die.wav");
-	music_win_game_    = Mix_LoadWAV("music/music_win_game.wav");
-	music_time_out_    = Mix_LoadWAV("music/music_time_out.wav");
-	music_live_out_    = Mix_LoadWAV("music/music_time_out.wav");
-	music_start_game_  = Mix_LoadWAV("music/music_start_game.mp3");
+bool MusicGame::loadMusic() {
+    bool success = true;
+
+    success &= loadMusicFile("music/music_background.mp3", &music_background_);
+    success &= loadChunkFile("music/music_eat_dot.wav", &music_eat_dot_);
+    success &= loadChunkFile("music/music_eat_big_dot.wav", &music_eat_big_dot_);
+    success &= loadChunkFile("music/music_die.wav", &music_die_);
+    success &= loadChunkFile("music/music_win_game.wav", &music_win_game_);
+    success &= loadChunkFile("music/music_time_out.wav", &music_time_out_);
+    success &= loadChunkFile("music/music_time_out.wav", &music_live_out_);
+    success &= (bool) (music_start_game_  = Mix_LoadWAV("music/music_start_game.mp3"));
+
+    return success;
 }
 
 Mix_Music* MusicGame::getMusicBackground() const {
@@ -58,7 +62,7 @@ Mix_Chunk* MusicGame::getMusicStartGame() const {
 	return music_start_game_;
 }
 
-void MusicGame::free() {
+void MusicGame::freeResources() {
     Mix_FreeChunk(music_eat_dot_);
 	Mix_FreeChunk(music_eat_big_dot_);
 	Mix_FreeChunk(music_die_);
@@ -78,4 +82,21 @@ void MusicGame::free() {
 	music_background_ = NULL;
 
 	Mix_Quit();
+}
+
+bool MusicGame::loadMusicFile(const std::string& filePath, Mix_Music** musicPtr) {
+  *musicPtr = Mix_LoadMUS(filePath.c_str());
+  if (*musicPtr == nullptr) {
+    std::cerr << "Error loading music: " << filePath << " - " << Mix_GetError() << std::endl;
+    return false;
+  }
+  return true;
+}
+bool MusicGame::loadChunkFile(const std::string& filePath, Mix_Chunk** musicPtr) {
+  *musicPtr = Mix_LoadWAV(filePath.c_str());
+  if (*musicPtr == nullptr) {
+    std::cerr << "Error loading music: " << filePath << " - " << Mix_GetError() << std::endl;
+    return false;
+  }
+  return true;
 }

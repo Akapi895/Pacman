@@ -2,37 +2,39 @@
 
 MouseButton::MouseButton()
 {
-	object_position_.x = 0;
-	object_position_.y = 0;
+	clickRect_.x = 0;
+	clickRect_.y = 0;
 }
 
 void MouseButton::setPositionObject(int posx, int posy, int width, int height)
 {
-	object_position_.x = posx;
-	object_position_.y = posy;
-	object_position_.w = width;
-	object_position_.h = height;
+	clickRect_.x = posx;
+	clickRect_.y = posy;
+	clickRect_.w = width;
+	clickRect_.h = height;
 }
 
 bool MouseButton::handleEvent(SDL_Event* event_, SDL_Renderer* renderer)
 {
 	int x, y;
 	SDL_GetMouseState(&x, &y);
+	isClicked_ = false;
 
-	if (x < object_position_.x || x > object_position_.x + object_position_.w)
-	{
-		return false;
-	}
+	if (x < clickRect_.x || x > clickRect_.x + clickRect_.w) {
+        return false;
+    } else if (y < clickRect_.y || y > clickRect_.y + clickRect_.h) {
+        return false;
+    }
 
-	else if (y < object_position_.y || y > object_position_.y + object_position_.h)
-	{
-		return false;
-	}
+    // Handle left mouse button click (optional)
+    if (event_->type == SDL_MOUSEBUTTONDOWN && event_->button.button == SDL_BUTTON_LEFT) {
+        isClicked_ = true;
+    }
 
-	return true;
+    return true;
 }
 
-SDL_Rect MouseButton::getRect() const
+SDL_Rect MouseButton::getClickRect() const
 {
-	return object_position_;
+	return clickRect_;
 }
