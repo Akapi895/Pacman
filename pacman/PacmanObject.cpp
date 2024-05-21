@@ -257,7 +257,7 @@ void PacmanObject::checkToItem(GameMap& checkMap, MusicGame* musicEatItems, int 
 		if (tileNumber == TILE_PAC_BIG_DOTS_)
 		{
 			Mix_PlayChannel(-1, musicEatItems->getMusicEatBigDot(), 0);
-			score_ += 50;
+			score_ += 40;
 			score_ += (5 - difficultyLevel + 1) * 5;
 			number_items--;
 		}

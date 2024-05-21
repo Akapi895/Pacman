@@ -3,13 +3,13 @@
 void renderScoreText(const int& scoreGame, TTF_Font*& fontText, TextObject& moneyText, SDL_Renderer* renderer) {
 	moneyText.setText("SCORE:");
 	moneyText.loadFromRenderText(fontText, renderer);
-	moneyText.renderText(renderer, SCREEN_WIDTH - 195, 45);
+	moneyText.renderText(renderer, SCREEN_WIDTH - 195, 48);
 
 	string scoreRender = to_string(scoreGame);
 
 	moneyText.setText(scoreRender);
 	moneyText.loadFromRenderText(fontText, renderer);
-	moneyText.renderText(renderer, 995 - moneyText.getWidth() / 2, 90);
+	moneyText.renderText(renderer, 995 - moneyText.getWidth() / 2, 99);
 }
 
 bool renderStopMusic(BaseObject& smallLight, SDL_Event* event_, SDL_Renderer* renderer, MouseButton& buttonStopMusic) {
@@ -122,11 +122,11 @@ void renderPacmanLiveText(const int& numberLives, TTF_Font*& fontText, TextObjec
 {
 	livesText.setText("LIVES:");
 	livesText.loadFromRenderText(fontText, renderer);
-	livesText.renderText(renderer, SCREEN_WIDTH - 195, 315);
+	livesText.renderText(renderer, SCREEN_WIDTH - 195, 328);
 
 	for (int i = 0; i < numberLives; i++)
 	{
-		livesImage.setRect(i * (TILE_SIZE * 1.5) + 930, 355);
+		livesImage.setRect(i * (TILE_SIZE * 1.5) + 930, 375);
 		livesImage.render(renderer);
 	}
 
@@ -136,13 +136,13 @@ void renderTimeText(const int& gameTime, TTF_Font*& fontText, TextObject& timeTe
 {
 	timeText.setText("TIME:");
 	timeText.loadFromRenderText(fontText, renderer);
-	timeText.renderText(renderer, SCREEN_WIDTH - 185, 175);
+	timeText.renderText(renderer, SCREEN_WIDTH - 185, 187);
 
 	string stringRender = to_string(gameTime);
 
 	timeText.setText(stringRender);
 	timeText.loadFromRenderText(fontText, renderer);
-	timeText.renderText(renderer, 995 - timeText.getWidth() / 2, 220);
+	timeText.renderText(renderer, 995 - timeText.getWidth() / 2, 242);
 }
 
 void renderImageWinGame(SDL_Renderer* renderer, BaseObject* background)
@@ -165,7 +165,7 @@ void renderImageWinGame(SDL_Renderer* renderer, BaseObject* background)
 		SDL_RenderClear(renderer);
 		background->render(renderer);
 
-		imageBackGroundWinGame.setRect(150, 25);
+		imageBackGroundWinGame.setRect(0, 0);
 		imageBackGroundWinGame.render(renderer);
 
 
@@ -312,7 +312,7 @@ void renderImageRankScore( BaseObject& imageLossGame, vector<int> rankScore, SDL
 	buttonReturnRank.setPositionObject(X_BACK_FROM_RANK_, Y_BACK_FROM_RANK_, WIDTH_BUTTON_, HEIGHT_BUTTON_);
 
 	TextObject scoreText;
-	scoreText.setColor(WHITE_);
+	scoreText.setColor(BLACK_);
 	bool inRank = true;
 
 	while (inRank)

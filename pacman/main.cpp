@@ -12,7 +12,13 @@ int main(int argc, char* argv[])
 	int score = 0;
 	bool winGame = false;
 
+	SDL_Event event;
+
 	while(true) {
+//        int x, y;
+//        SDL_GetMouseState(&x, &y);
+//        cerr << "Down at (" << x << ", " << y << ")\n";
+
 		bool newGame = false;
 		bool isQuitGame = false;
 
@@ -64,7 +70,7 @@ int main(int argc, char* argv[])
 		Mix_PlayChannel(-1, gameMusic.getMusicStartGame(), 0);
 		while (!isQuitGame) {
 
-			srand(time(NULL));
+			srand(time(0));
 			SDL_RenderClear(gRenderer);
 
 			fpsTimer.start();
@@ -115,6 +121,7 @@ int main(int argc, char* argv[])
 			checkCollisionPacmanWithPets(pacman, gRenderer, gameMap, gBackground, pets, numberDie, gameMusic);
 			statusGame(pacman, isQuitGame, winGame, timeCurrent, numberDie);
 
+            winGame == true;
 			if (isQuitGame == true && winGame == false)
 			{
 				settingLostGame(gameMusic, gRenderer, numberDie, score, gFontText, scoreGame, &gEvent);
