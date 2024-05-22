@@ -21,10 +21,10 @@
 1716083901 source:g:\cpp\game\game_btl\pacman\commonfunction.cpp
 	"CommonFunction.h"
 
-1716086062 source:g:\cpp\game\game_btl\pacman\gamemap.cpp
+1716401960 source:g:\cpp\game\game_btl\pacman\gamemap.cpp
 	"GameMap.h"
 
-1716085691 g:\cpp\game\game_btl\pacman\gamemap.h
+1716401939 g:\cpp\game\game_btl\pacman\gamemap.h
 	"CommonFunction.h"
 	"BaseObject.h"
 
@@ -58,19 +58,22 @@
 	"GameMap.h"
 	"MusicGame.h"
 
-1716013806 source:g:\cpp\game\game_btl\pacman\petobject.cpp
+1716401849 source:g:\cpp\game\game_btl\pacman\petobject.cpp
 	"PetObject.h"
+	"PetObjectASTAR.h"
 	<algorithm>
+	<utility>
 
-1716013820 g:\cpp\game\game_btl\pacman\petobject.h
+1716401816 g:\cpp\game\game_btl\pacman\petobject.h
 	"CommonFunction.h"
 	"BaseObject.h"
 	"PacmanObject.h"
 	"GameMap.h"
+	"PetObjectASTAR.h"
 	<unordered_set>
 	<limits>
 
-1716368260 source:g:\cpp\game\game_btl\pacman\rendergame.cpp
+1716402078 source:g:\cpp\game\game_btl\pacman\rendergame.cpp
 	"RenderGame.h"
 
 1716368301 g:\cpp\game\game_btl\pacman\rendergame.h
@@ -83,10 +86,10 @@
 	"CommonFunction.h"
 	<memory>
 
-1716370442 source:g:\cpp\game\game_btl\pacman\settinggame.cpp
+1716401887 source:g:\cpp\game\game_btl\pacman\settinggame.cpp
 	"SettingGame.h"
 
-1716091729 g:\cpp\game\game_btl\pacman\settinggame.h
+1716402023 g:\cpp\game\game_btl\pacman\settinggame.h
 	"CommonFunction.h"
 	"BaseObject.h"
 	"GameMap.h"
@@ -111,7 +114,16 @@
 1716370388 source:g:\cpp\game\game_btl\pacman\main.cpp
 	"gamePlay.h"
 
-1716370547 g:\cpp\game\game_btl\pacman\gameplay.h
+1716401993 g:\cpp\game\game_btl\pacman\gameplay.h
 	"SettingGame.h"
 	<time.h>
+
+1716401909 g:\cpp\game\game_btl\pacman\petobjectastar.h
+	"CommonFunction.h"
+	<stack>
+	<float.h>
+	<set>
+
+1716401924 source:g:\cpp\game\game_btl\pacman\petobjectastar.cpp
+	"PetObjectASTAR.h"
 

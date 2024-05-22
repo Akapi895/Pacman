@@ -36,7 +36,7 @@ void renderSelectDifficulty(SDL_Renderer* renderer, SDL_Event* event_, bool& isQ
 			smallLight.setRect(X_BUTTON_EASY_GAME_, Y_BUTTON_EASY_GAME_);
 			smallLight.render(renderer);
 			if (event_->type == SDL_MOUSEBUTTONDOWN) {
-				numberDifficult = 10;
+				numberDifficult = 13;
 				return;
 			}
 		}
@@ -44,7 +44,7 @@ void renderSelectDifficulty(SDL_Renderer* renderer, SDL_Event* event_, bool& isQ
 			smallLight.setRect(X_BUTTON_NOMAL_GAME_, Y_BUTTON_NOMAL_GAME_);
 			smallLight.render(renderer);
 			if (event_->type == SDL_MOUSEBUTTONDOWN) {
-				numberDifficult = 5;
+				numberDifficult = 11;
 				return;
 			}
 		}
@@ -52,7 +52,7 @@ void renderSelectDifficulty(SDL_Renderer* renderer, SDL_Event* event_, bool& isQ
 			smallLight.setRect(X_BUTTON_HARD_GAME_, Y_BUTTON_HARD_GAME_);
 			smallLight.render(renderer);
 			if (event_->type == SDL_MOUSEBUTTONDOWN) {
-				numberDifficult = 3;
+				numberDifficult = 9;
 				return;
 			}
 		}
@@ -60,7 +60,7 @@ void renderSelectDifficulty(SDL_Renderer* renderer, SDL_Event* event_, bool& isQ
 			smallLight.setRect(X_BUTTON_VERY_HARD_GAME_, Y_BUTTON_VERY_HARD_GAME_);
 			smallLight.render(renderer);
 			if (event_->type == SDL_MOUSEBUTTONDOWN) {
-				numberDifficult = 2;
+				numberDifficult = 8;
 				return;
 			}
 		}

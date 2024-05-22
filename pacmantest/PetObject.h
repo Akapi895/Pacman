@@ -14,7 +14,7 @@ public:
 	PetObject();
 	~PetObject(){ ; }
 
-	void setStartPet(SDL_Renderer* renderer, SDL_Color* colorKey);
+	void setStartPet(SDL_Renderer* renderer, SDL_Color* colorKey, int num = 5);
 	void setPetNumber(const int petNumber);
 
     SDL_Rect getRect() const;
@@ -23,14 +23,11 @@ public:
 	void setClips();
 
 	void updateImageDirect(SDL_Renderer* renderer);
-    int getDirectionToPos(int targetX, int targetY);
+
     void petMove(GameMap& checkMap);
 	bool checkToMap(GameMap& checkMap);
-	bool checkToMap(GameMap& checkMap, int newx, int newy);
-
 
 	void autoInputDirect(GameMap& checkMap);
-
 
 	void autoAiInputDirect(GameMap& checkMap, PacmanObject& pacman);
 	void autoAStarInputDirect(GameMap& checkMap, PacmanObject& pacman);
@@ -53,7 +50,6 @@ private:
 
 	int pet_number_;
 
-	int getCost(int tileType);
 };
 #endif // PET_OBJECT_H
 

@@ -4,7 +4,7 @@
 void letsPlay() {
     initData(gWindow, gRenderer, gFontText);
 
-	int levelDifficult = 5;
+	int levelDifficult = 9;
 	int mapNumber = 1;
 	int score = 0;
 	bool winGame = false;
@@ -44,7 +44,7 @@ void letsPlay() {
 
 		PacmanObject pacman;
 		PetObject pets[NUMBER_PET_];
-		settingPacmanAndPets(gRenderer, pacman, pets, numberItems, score);
+		settingPacmanAndPets(gRenderer, pacman, pets, numberItems, score, levelDifficult);
 
 		if (winGame == false) {
 			startGame(gRenderer, &gEvent);

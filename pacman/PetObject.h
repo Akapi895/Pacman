@@ -5,6 +5,7 @@
 #include "BaseObject.h"
 #include "PacmanObject.h"
 #include "GameMap.h"
+#include "PetObjectASTAR.h"
 #include <unordered_set>
 #include <limits>
 
@@ -13,7 +14,7 @@ public:
 	PetObject();
 	~PetObject(){ ; }
 
-	void setStartPet(SDL_Renderer* renderer, SDL_Color* colorKey);
+	void setStartPet(SDL_Renderer* renderer, SDL_Color* colorKey, int num = 5);
 	void setPetNumber(const int petNumber);
 
     SDL_Rect getRect() const;
@@ -22,18 +23,14 @@ public:
 	void setClips();
 
 	void updateImageDirect(SDL_Renderer* renderer);
-    int getDirectionToPos(int targetX, int targetY);
+
     void petMove(GameMap& checkMap);
 	bool checkToMap(GameMap& checkMap);
-	bool checkToMap(GameMap& checkMap, int newx, int newy);
-    vector<pair<int, int>> findShortestPathBFS(GameMap& checkMap, Map* checkTileNumber,
-                                            vector<vector<int>>& map, pair<int, int> startPos, pair<int, int> endPos);
 
 	void autoInputDirect(GameMap& checkMap);
-	vector<pair<int, int>> findShortestPathDijkstra(GameMap& checkMap, Map* checkTileNumber,
-                                                 vector<vector<int>>& map1, pair<int, int> startPos, pair<int, int> endPos);
 
 	void autoAiInputDirect(GameMap& checkMap, PacmanObject& pacman);
+	void autoAStarInputDirect(GameMap& checkMap, PacmanObject& pacman);
 	void setDirection(GameMap& checkMap, SDL_Renderer* renderer);
 
 	void render(SDL_Renderer* renderer);
@@ -53,7 +50,6 @@ private:
 
 	int pet_number_;
 
-	int getCost(int tileType);
 };
 #endif // PET_OBJECT_H
 

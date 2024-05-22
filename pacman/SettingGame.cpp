@@ -128,15 +128,15 @@ void loadImageAndSetPosition(BaseObject& gBackground, BaseObject& pacmanLivesIma
 	gameMap.loadTiles(renderer);
 }
 
-void settingPacmanAndPets(SDL_Renderer* renderer, PacmanObject& pacman, PetObject* pets, const int& numberItems, const int& score) {
+void settingPacmanAndPets(SDL_Renderer* renderer, PacmanObject& pacman, PetObject* pets, const int& numberItems, const int& score, const int& levelDifficult) {
 	pacman.setStartPacman(renderer, &COLOR_KEY_WHITE_);
 	pacman.setNumberItems(numberItems);
 	pacman.setScore(score);
 
-	for (int i = 0; i < NUMBER_PET_; i++) {
-		pets[i].setPetNumber(i);
-		pets[i].setStartPet(renderer, &COLOR_KEY_BLACK_);
-	}
+    for (int i = 0; i < NUMBER_PET_; i++) {
+        pets[i].setPetNumber(i);
+        pets[i].setStartPet(renderer, &COLOR_KEY_BLACK_, i);
+    }
 }
 
 void pacmanDoing(PacmanObject& pacman, GameMap& gameMap, SDL_Renderer* renderer, MusicGame* gameMusic, const int& difficultyLevel) {
@@ -150,9 +150,33 @@ void petDoing(PetObject* pets, GameMap& gameMap, SDL_Renderer* renderer, PacmanO
 	for (int i = 0; i < NUMBER_PET_; i++) {
 		int randomAutoDirect = rand() % levelDifficult;
 
-		if (randomAutoDirect % levelDifficult == 0)
-			pets[i].autoAiInputDirect(gameMap, pacman);
-		else pets[i].autoInputDirect(gameMap);
+		if (levelDifficult == 13) {
+            if (randomAutoDirect == 0) pets[i].autoAStarInputDirect(gameMap, pacman);
+            else if (randomAutoDirect == 1 || randomAutoDirect == 5) pets[i].autoAiInputDirect(gameMap, pacman);
+            else pets[i].autoInputDirect(gameMap);
+		}
+		else if (levelDifficult == 11) {
+            if (randomAutoDirect == 0) pets[i].autoAStarInputDirect(gameMap, pacman);
+            else if (randomAutoDirect <= 3) pets[i].autoAiInputDirect(gameMap, pacman);
+            else pets[i].autoInputDirect(gameMap);
+		}
+		else if (levelDifficult == 9) {
+            if (randomAutoDirect == 0) pets[i].autoAStarInputDirect(gameMap, pacman);
+            else if (randomAutoDirect <= 5) pets[i].autoAiInputDirect(gameMap, pacman);
+            else pets[i].autoInputDirect(gameMap);
+		}
+		else if (levelDifficult == 8) {
+//            if (randomAutoDirect == 0) pets[i].autoAStarInputDirect(gameMap, pacman);
+            if (randomAutoDirect <= 5) pets[i].autoAiInputDirect(gameMap, pacman);
+            else pets[i].autoInputDirect(gameMap);
+		}
+
+//		if (randomAutoDirect % levelDifficult == 0)
+//			pets[i].autoAStarInputDirect(gameMap, pacman);
+//		else {
+////            pets[i].autoAStarInputDirect(gameMap, pacman);
+//            pets[i].autoInputDirect(gameMap);
+//		}
 
 		pets[i].setDirection(gameMap, renderer);
 		pets[i].petMove(gameMap);

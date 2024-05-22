@@ -5,7 +5,7 @@
 1716083594 g:\cpp\game\game_btl\pacmantest\baseobject.h
 	"CommonFunction.h"
 
-1716369696 g:\cpp\game\game_btl\pacmantest\commonfunction.h
+1716399587 g:\cpp\game\game_btl\pacmantest\commonfunction.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_ttf.h>
@@ -21,7 +21,7 @@
 1716083901 source:g:\cpp\game\game_btl\pacmantest\commonfunction.cpp
 	"CommonFunction.h"
 
-1716390622 source:g:\cpp\game\game_btl\pacmantest\gamemap.cpp
+1716395464 source:g:\cpp\game\game_btl\pacmantest\gamemap.cpp
 	"GameMap.h"
 
 1716393963 g:\cpp\game\game_btl\pacmantest\gamemap.h
@@ -31,11 +31,11 @@
 1716370388 source:g:\cpp\game\game_btl\pacmantest\main.cpp
 	"gamePlay.h"
 
-1716390519 g:\cpp\game\game_btl\pacmantest\gameplay.h
+1716401371 g:\cpp\game\game_btl\pacmantest\gameplay.h
 	"SettingGame.h"
 	<time.h>
 
-1716091729 g:\cpp\game\game_btl\pacmantest\settinggame.h
+1716399234 g:\cpp\game\game_btl\pacmantest\settinggame.h
 	"CommonFunction.h"
 	"BaseObject.h"
 	"GameMap.h"
@@ -64,7 +64,7 @@
 	"CommonFunction.h"
 	<memory>
 
-1716393701 g:\cpp\game\game_btl\pacmantest\petobject.h
+1716399567 g:\cpp\game\game_btl\pacmantest\petobject.h
 	"CommonFunction.h"
 	"BaseObject.h"
 	"PacmanObject.h"
@@ -100,10 +100,10 @@
 1716169604 source:g:\cpp\game\game_btl\pacmantest\pacmanobject.cpp
 	"PacmanObject.h"
 
-1716368260 source:g:\cpp\game\game_btl\pacmantest\rendergame.cpp
+1716401434 source:g:\cpp\game\game_btl\pacmantest\rendergame.cpp
 	"RenderGame.h"
 
-1716370442 source:g:\cpp\game\game_btl\pacmantest\settinggame.cpp
+1716401662 source:g:\cpp\game\game_btl\pacmantest\settinggame.cpp
 	"SettingGame.h"
 
 1716092653 source:g:\cpp\game\game_btl\pacmantest\textobject.cpp
@@ -112,7 +112,7 @@
 1716093183 source:g:\cpp\game\game_btl\pacmantest\timer.cpp
 	"Timer.h"
 
-1716394101 source:g:\cpp\game\game_btl\pacmantest\petobject.cpp
+1716400175 source:g:\cpp\game\game_btl\pacmantest\petobject.cpp
 	"PetObject.h"
 	"PetObjectASTAR.h"
 	<algorithm>
@@ -124,6 +124,6 @@
 	<float.h>
 	<set>
 
-1716394215 source:g:\cpp\game\game_btl\pacmantest\petobjectastar.cpp
+1716398682 source:g:\cpp\game\game_btl\pacmantest\petobjectastar.cpp
 	"PetObjectASTAR.h"
 

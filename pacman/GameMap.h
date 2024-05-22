@@ -13,7 +13,7 @@ struct Map
 
 	int max_x = 0;
 	int max_y = 0;
-	std::vector<std::vector<int>> tiles_number_;
+	int tiles_number_[MAX_MAP_Y][MAX_MAP_X];
 	string file_name_ = "";
 
 };
@@ -39,8 +39,10 @@ public:
 
 	Map* getMap();
 	void setMap(const Map& mapData);
-private:
+
 	Map game_map_;
+private:
+
 	TileMap tiles_image_[MAP_TILES_IMAGE_];
 
 	int number_items_ = 0;

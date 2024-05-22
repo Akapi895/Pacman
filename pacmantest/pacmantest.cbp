@@ -32,6 +32,33 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="BaseObject.cpp" />
+		<Unit filename="BaseObject.h" />
+		<Unit filename="CommonFunction.cpp" />
+		<Unit filename="CommonFunction.h" />
+		<Unit filename="GameMap.cpp" />
+		<Unit filename="GameMap.h" />
+		<Unit filename="MouseButton.cpp" />
+		<Unit filename="MouseButton.h" />
+		<Unit filename="MusicGame.cpp" />
+		<Unit filename="MusicGame.h" />
+		<Unit filename="PacManDie.cpp" />
+		<Unit filename="PacManDie.h" />
+		<Unit filename="PacmanObject.cpp" />
+		<Unit filename="PacmanObject.h" />
+		<Unit filename="PetObject.cpp" />
+		<Unit filename="PetObject.h" />
+		<Unit filename="PetObjectASTAR.cpp" />
+		<Unit filename="PetObjectASTAR.h" />
+		<Unit filename="RenderGame.cpp" />
+		<Unit filename="RenderGame.h" />
+		<Unit filename="SettingGame.cpp" />
+		<Unit filename="SettingGame.h" />
+		<Unit filename="TextObject.cpp" />
+		<Unit filename="TextObject.h" />
+		<Unit filename="Timer.cpp" />
+		<Unit filename="Timer.h" />
+		<Unit filename="gamePlay.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

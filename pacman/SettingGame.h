@@ -24,7 +24,7 @@ void loadImageAndSetPosition(BaseObject& gBackground, BaseObject& pacmanLivesIma
                              MouseButton& buttonStopSound, GameMap& gameMap, const int& mapNumber);
 
 void settingPacmanAndPets(SDL_Renderer* renderer, PacmanObject& pacman,
-                            PetObject* pets, const int& numberItems, const int& score);
+                            PetObject* pets, const int& numberItems, const int& score, const int& levelDifficult);
 
 void pacmanDoing(PacmanObject& pacman, GameMap& gameMap, SDL_Renderer* renderer, MusicGame* gameMusic, const int& difficultyLevel);
 

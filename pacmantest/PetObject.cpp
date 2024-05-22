@@ -18,11 +18,10 @@ PetObject::PetObject() {
 	pet_number_ = 0;
 }
 
-void PetObject::setStartPet(SDL_Renderer* renderer, SDL_Color* colorKey) {
+void PetObject::setStartPet(SDL_Renderer* renderer, SDL_Color* colorKey, int num) {
 	current_frame_ = PET_FRAME_;
-
-	x_pos_ = START_PET_X_ * PIXEL_CLIP_;
-	y_pos_ = START_PET_Y_ * PIXEL_CLIP_;
+    x_pos_ = START_PET_X_ * PIXEL_CLIP_;
+    y_pos_ = START_PET_Y_ * PIXEL_CLIP_;
 
 	direction_current_ = GO_DOWN;
 	direction_auto_ = GO_DOWN;
@@ -140,112 +139,18 @@ void PetObject::autoInputDirect(GameMap& checkMap) {
 }
 
 
-int PetObject::getDirectionToPos(int targetX, int targetY) {
-    int currentX = getRect().x;
-    int currentY = getRect().y;
-
-    int dx = targetX - currentX;
-    int dy = targetY - currentY;
-
-    if (dx == 0 && dy > 0) {
-        return GO_UP;
-    } else if (dx > 0 && dy == 0) {
-        return GO_RIGHT;
-    } else if (dx == 0 && dy < 0) {
-        return GO_DOWN;
-    } else if (dx < 0 && dy == 0) {
-        return GO_LEFT;
-    }
-}
-
-int PetObject::getCost(int tileType) {
-    // Example: Assign different costs for different tile types
-    switch (tileType) {
-      case 0: // Open space (low cost)
-        return 1;
-      case 1: // Wall (impassable)
-        return numeric_limits<int>::max();
-      case 2: // Water (high cost)
-        return 5;
-      default:
-        return 3; // Default cost
-    }
-  }
 
 
 void PetObject::autoAStarInputDirect(GameMap& checkMap, PacmanObject& pacman) {
     SDL_Rect pacmanPos = pacman.getPos();
-    pair <int, int> src = make_pair(pacmanPos.x, pacmanPos.y);
-    pair <int, int> des = make_pair(x_pos_, y_pos_);
+    pair <int, int> des = make_pair(pacmanPos.x / TILE_SIZE, pacmanPos.y / TILE_SIZE);
+    pair <int, int> src = make_pair(x_pos_ / TILE_SIZE, y_pos_ / TILE_SIZE);
+
+
 
     int direction_ = findDirectionFrom(checkMap.game_map_.tiles_number_, src, des);
-    if (direction_ == direction_current_) {
-        map<int, int> candidatesGoType;
-        SDL_Rect pacmanPos = pacman.getPos();
 
-        if (direction_current_ != GO_UP)
-        {
-            y_pos_ += VEL_PACMAN_;
-            if (!checkToMap(checkMap))
-            {
-                int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
-                candidatesGoType[distance_] = GO_DOWN;
-            }
-            y_pos_ -= VEL_PACMAN_;
-        }
-
-        if (direction_current_ != GO_LEFT) {
-            x_pos_ += VEL_PACMAN_;
-            if (!checkToMap(checkMap)) {
-                int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
-                candidatesGoType[distance_] = GO_RIGHT;
-            }
-            x_pos_ -= VEL_PACMAN_;
-        }
-
-        if (direction_current_ != GO_RIGHT) {
-            x_pos_ -= VEL_PACMAN_;
-            if (!checkToMap(checkMap)) {
-                int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
-                candidatesGoType[distance_] = GO_LEFT;
-            }
-            x_pos_ += VEL_PACMAN_;
-        }
-
-        if (direction_current_ != GO_DOWN) {
-            y_pos_ -= VEL_PACMAN_;
-            if (!checkToMap(checkMap)) {
-                int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
-                candidatesGoType[distance_] = GO_UP;
-            }
-            y_pos_ += VEL_PACMAN_;
-        }
-
-        if (candidatesGoType.size() == 0) {
-            switch (direction_current_) {
-                case GO_UP: direction_auto_ = GO_DOWN; break;
-                case GO_DOWN: direction_auto_ = GO_UP; break;
-                case GO_RIGHT: direction_auto_ = GO_LEFT; break;
-                case GO_LEFT: direction_auto_ = GO_RIGHT; break;
-            }
-        }
-        else {
-            for (auto i : candidatesGoType) {
-                direction_auto_ = i.second;
-                break;
-            }
-        }
-    }
-    else {
-        switch (direction_)
-        {
-            case GO_UP: direction_auto_ = GO_DOWN; break;
-            case GO_DOWN: direction_auto_ = GO_UP; break;
-            case GO_RIGHT: direction_auto_ = GO_LEFT; break;
-            case GO_LEFT: direction_auto_ = GO_RIGHT; break;
-        }
-    }
-
+    direction_auto_ = direction_;
 }
 
 void PetObject::autoAiInputDirect(GameMap& checkMap, PacmanObject& pacman) {
@@ -258,7 +163,6 @@ void PetObject::autoAiInputDirect(GameMap& checkMap, PacmanObject& pacman) {
         if (!checkToMap(checkMap))
         {
             int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
-//            candidatesGoType.insert({ distance_, GO_DOWN });
             candidatesGoType[distance_] = GO_DOWN;
         }
         y_pos_ -= VEL_PACMAN_;
@@ -270,7 +174,6 @@ void PetObject::autoAiInputDirect(GameMap& checkMap, PacmanObject& pacman) {
 		if (!checkToMap(checkMap))
 		{
 			int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
-//			candidatesGoType.insert({ distance_, GO_RIGHT });
 			candidatesGoType[distance_] = GO_RIGHT;
 		}
 		x_pos_ -= VEL_PACMAN_;
@@ -282,7 +185,6 @@ void PetObject::autoAiInputDirect(GameMap& checkMap, PacmanObject& pacman) {
 		if (!checkToMap(checkMap))
 		{
 			int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
-//			candidatesGoType.insert({ distance_, GO_LEFT });
 			candidatesGoType[distance_] = GO_LEFT;
 		}
 		x_pos_ += VEL_PACMAN_;
@@ -294,7 +196,6 @@ void PetObject::autoAiInputDirect(GameMap& checkMap, PacmanObject& pacman) {
 		if (!checkToMap(checkMap))
 		{
 			int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
-//			candidatesGoType.insert({ distance_, GO_UP });
 			candidatesGoType[distance_] = GO_UP;
 		}
 		y_pos_ += VEL_PACMAN_;
@@ -326,16 +227,22 @@ void PetObject::setDirection(GameMap& checkMap, SDL_Renderer* renderer) {
 		return;
 	}
 
-	if (direction_current_ != GO_DOWN && direction_auto_ == GO_DOWN)
+	if (direction_auto_ == GO_DOWN)
 	{
-		y_pos_ += VEL_PACMAN_;
-		if (!checkToMap(checkMap))
-		{
-			direction_current_ = GO_DOWN;
-			updateImageDirect(renderer);
-		}
-		y_pos_ -= VEL_PACMAN_;
-		return;
+	    if (direction_current_ != GO_DOWN) {
+            y_pos_ += VEL_PACMAN_;
+            if (!checkToMap(checkMap))
+            {
+                direction_current_ = GO_DOWN;
+                updateImageDirect(renderer);
+            }
+            y_pos_ -= VEL_PACMAN_;
+            return;
+	    }
+	    else {
+
+	    }
+
 	}
 	if (direction_current_ != GO_UP && direction_auto_ == GO_UP)
 	{

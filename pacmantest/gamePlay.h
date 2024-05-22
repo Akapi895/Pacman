@@ -4,7 +4,7 @@
 void letsPlay() {
     initData(gWindow, gRenderer, gFontText);
 
-	int levelDifficult = 5;
+	int levelDifficult = 9;
 	int mapNumber = 1;
 	int score = 0;
 	bool winGame = false;
@@ -44,7 +44,7 @@ void letsPlay() {
 
 		PacmanObject pacman;
 		PetObject pets[NUMBER_PET_];
-		settingPacmanAndPets(gRenderer, pacman, pets, numberItems, score);
+		settingPacmanAndPets(gRenderer, pacman, pets, numberItems, score, levelDifficult);
 
 		if (winGame == false) {
 			startGame(gRenderer, &gEvent);
@@ -78,7 +78,7 @@ void letsPlay() {
 					settingLostGame(gameMusic, gRenderer, numberDie, score, gFontText, scoreGame, &gEvent);
 				}
 
-//				stopAndResumeGame(&gEvent, timeGame, gameMusic, stopSound, newGame);
+				stopAndResumeGame(&gEvent, timeGame, gameMusic, stopSound, newGame);
 
 				if (renderStopSound(smallLight, &gEvent, gRenderer, buttonStopSound))
                     statusSound(stopSound, gameMusic);
