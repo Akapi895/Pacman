@@ -48,6 +48,8 @@
 		<Unit filename="PacmanObject.h" />
 		<Unit filename="PetObject.cpp" />
 		<Unit filename="PetObject.h" />
+		<Unit filename="PetObjectASTAR.cpp" />
+		<Unit filename="PetObjectASTAR.h" />
 		<Unit filename="RenderGame.cpp" />
 		<Unit filename="RenderGame.h" />
 		<Unit filename="SettingGame.cpp" />
