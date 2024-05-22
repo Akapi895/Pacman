@@ -78,7 +78,7 @@ void letsPlay() {
 					settingLostGame(gameMusic, gRenderer, numberDie, score, gFontText, scoreGame, &gEvent);
 				}
 
-				stopAndResumeGame(&gEvent, timeGame, gameMusic, stopSound, newGame);
+//				stopAndResumeGame(&gEvent, timeGame, gameMusic, stopSound, newGame);
 
 				if (renderStopSound(smallLight, &gEvent, gRenderer, buttonStopSound))
                     statusSound(stopSound, gameMusic);

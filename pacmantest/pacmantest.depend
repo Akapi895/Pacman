@@ -21,17 +21,17 @@
 1716083901 source:g:\cpp\game\game_btl\pacmantest\commonfunction.cpp
 	"CommonFunction.h"
 
-1716086062 source:g:\cpp\game\game_btl\pacmantest\gamemap.cpp
+1716390622 source:g:\cpp\game\game_btl\pacmantest\gamemap.cpp
 	"GameMap.h"
 
-1716085691 g:\cpp\game\game_btl\pacmantest\gamemap.h
+1716393963 g:\cpp\game\game_btl\pacmantest\gamemap.h
 	"CommonFunction.h"
 	"BaseObject.h"
 
 1716370388 source:g:\cpp\game\game_btl\pacmantest\main.cpp
 	"gamePlay.h"
 
-1716370547 g:\cpp\game\game_btl\pacmantest\gameplay.h
+1716390519 g:\cpp\game\game_btl\pacmantest\gameplay.h
 	"SettingGame.h"
 	<time.h>
 
@@ -64,11 +64,12 @@
 	"CommonFunction.h"
 	<memory>
 
-1716390269 g:\cpp\game\game_btl\pacmantest\petobject.h
+1716393701 g:\cpp\game\game_btl\pacmantest\petobject.h
 	"CommonFunction.h"
 	"BaseObject.h"
 	"PacmanObject.h"
 	"GameMap.h"
+	"PetObjectASTAR.h"
 	<unordered_set>
 	<limits>
 
@@ -110,4 +111,19 @@
 
 1716093183 source:g:\cpp\game\game_btl\pacmantest\timer.cpp
 	"Timer.h"
+
+1716394101 source:g:\cpp\game\game_btl\pacmantest\petobject.cpp
+	"PetObject.h"
+	"PetObjectASTAR.h"
+	<algorithm>
+	<utility>
+
+1716393999 g:\cpp\game\game_btl\pacmantest\petobjectastar.h
+	"CommonFunction.h"
+	<stack>
+	<float.h>
+	<set>
+
+1716394215 source:g:\cpp\game\game_btl\pacmantest\petobjectastar.cpp
+	"PetObjectASTAR.h"
 

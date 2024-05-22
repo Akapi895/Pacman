@@ -5,6 +5,7 @@
 #include "BaseObject.h"
 #include "PacmanObject.h"
 #include "GameMap.h"
+#include "PetObjectASTAR.h"
 #include <unordered_set>
 #include <limits>
 
@@ -32,6 +33,7 @@ public:
 
 
 	void autoAiInputDirect(GameMap& checkMap, PacmanObject& pacman);
+	void autoAStarInputDirect(GameMap& checkMap, PacmanObject& pacman);
 	void setDirection(GameMap& checkMap, SDL_Renderer* renderer);
 
 	void render(SDL_Renderer* renderer);

@@ -1,5 +1,8 @@
 #include "PetObject.h"
+#include "PetObjectASTAR.h"
+
 #include <algorithm>
+#include <utility>
 
 PetObject::PetObject() {
 	current_frame_ = 0;
@@ -169,10 +172,86 @@ int PetObject::getCost(int tileType) {
     }
   }
 
+
+void PetObject::autoAStarInputDirect(GameMap& checkMap, PacmanObject& pacman) {
+    SDL_Rect pacmanPos = pacman.getPos();
+    pair <int, int> src = make_pair(pacmanPos.x, pacmanPos.y);
+    pair <int, int> des = make_pair(x_pos_, y_pos_);
+
+    int direction_ = findDirectionFrom(checkMap.game_map_.tiles_number_, src, des);
+    if (direction_ == direction_current_) {
+        map<int, int> candidatesGoType;
+        SDL_Rect pacmanPos = pacman.getPos();
+
+        if (direction_current_ != GO_UP)
+        {
+            y_pos_ += VEL_PACMAN_;
+            if (!checkToMap(checkMap))
+            {
+                int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
+                candidatesGoType[distance_] = GO_DOWN;
+            }
+            y_pos_ -= VEL_PACMAN_;
+        }
+
+        if (direction_current_ != GO_LEFT) {
+            x_pos_ += VEL_PACMAN_;
+            if (!checkToMap(checkMap)) {
+                int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
+                candidatesGoType[distance_] = GO_RIGHT;
+            }
+            x_pos_ -= VEL_PACMAN_;
+        }
+
+        if (direction_current_ != GO_RIGHT) {
+            x_pos_ -= VEL_PACMAN_;
+            if (!checkToMap(checkMap)) {
+                int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
+                candidatesGoType[distance_] = GO_LEFT;
+            }
+            x_pos_ += VEL_PACMAN_;
+        }
+
+        if (direction_current_ != GO_DOWN) {
+            y_pos_ -= VEL_PACMAN_;
+            if (!checkToMap(checkMap)) {
+                int distance_ = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
+                candidatesGoType[distance_] = GO_UP;
+            }
+            y_pos_ += VEL_PACMAN_;
+        }
+
+        if (candidatesGoType.size() == 0) {
+            switch (direction_current_) {
+                case GO_UP: direction_auto_ = GO_DOWN; break;
+                case GO_DOWN: direction_auto_ = GO_UP; break;
+                case GO_RIGHT: direction_auto_ = GO_LEFT; break;
+                case GO_LEFT: direction_auto_ = GO_RIGHT; break;
+            }
+        }
+        else {
+            for (auto i : candidatesGoType) {
+                direction_auto_ = i.second;
+                break;
+            }
+        }
+    }
+    else {
+        switch (direction_)
+        {
+            case GO_UP: direction_auto_ = GO_DOWN; break;
+            case GO_DOWN: direction_auto_ = GO_UP; break;
+            case GO_RIGHT: direction_auto_ = GO_LEFT; break;
+            case GO_LEFT: direction_auto_ = GO_RIGHT; break;
+        }
+    }
+
+}
+
 void PetObject::autoAiInputDirect(GameMap& checkMap, PacmanObject& pacman) {
 	map<int, int> candidatesGoType;
 	SDL_Rect pacmanPos = pacman.getPos();
-	//int distanceMin = (pacmanPos.x - x_pos_) * (pacmanPos.x - x_pos_) + (pacmanPos.y - y_pos_) * (pacmanPos.y - y_pos_);
+
     if (direction_current_ != GO_UP)
     {
         y_pos_ += VEL_PACMAN_;
@@ -352,36 +431,6 @@ bool PetObject::checkToMap(GameMap& checkMap)
 	return false;
 }
 
-bool PetObject::checkToMap(GameMap& checkMap, int newx, int newy)
-{
-	int xPosImage1 = newx / TILE_SIZE;
-	int yPosImage1 = newy / TILE_SIZE;
-
-	int xPosImage2 = (newx + TILE_SIZE - 1) / TILE_SIZE;
-	int yPosImage2 = newy / TILE_SIZE;
-
-	int xPosImage3 = newx / TILE_SIZE;
-	int yPosImage3 = (newy + TILE_SIZE - 1) / TILE_SIZE;
-
-	int xPosImage4 = (newx + TILE_SIZE - 1) / TILE_SIZE;
-	int yPosImage4 = (newy + TILE_SIZE - 1) / TILE_SIZE;
-
-	Map* checkTileNumber = checkMap.getMap();
-
-	if (checkTileNumber->tiles_number_[yPosImage1][xPosImage1] == TILE_WALL_
-		|| checkTileNumber->tiles_number_[yPosImage2][xPosImage2] == TILE_WALL_
-		|| checkTileNumber->tiles_number_[yPosImage3][xPosImage3] == TILE_WALL_
-		|| checkTileNumber->tiles_number_[yPosImage4][xPosImage4] == TILE_WALL_
-		|| checkTileNumber->tiles_number_[yPosImage1][xPosImage1] == TILE_WALL_2_
-		|| checkTileNumber->tiles_number_[yPosImage2][xPosImage2] == TILE_WALL_2_
-		|| checkTileNumber->tiles_number_[yPosImage3][xPosImage3] == TILE_WALL_2_
-		|| checkTileNumber->tiles_number_[yPosImage4][xPosImage4] == TILE_WALL_2_)
-	{
-		return true;
-	}
-
-	return false;
-}
 
 
 

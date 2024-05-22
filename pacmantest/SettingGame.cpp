@@ -151,7 +151,7 @@ void petDoing(PetObject* pets, GameMap& gameMap, SDL_Renderer* renderer, PacmanO
 		int randomAutoDirect = rand() % levelDifficult;
 
 		if (randomAutoDirect % levelDifficult == 0)
-			pets[i].autoAiInputDirect(gameMap, pacman);
+			pets[i].autoAStarInputDirect(gameMap, pacman);
 		else pets[i].autoInputDirect(gameMap);
 
 		pets[i].setDirection(gameMap, renderer);
