@@ -36,7 +36,7 @@ const string GAME_TITLE = "PACMAN_23021709";
 
 const int FRAME_PER_SECOND = 14;
 
-const int NUMBER_PET_ = 4;
+const int NUMBER_PET_ = 200;
 
 const int TIME_PLAY = 200;
 
@@ -125,7 +125,7 @@ bool checkCollision(const SDL_Rect& a, const SDL_Rect& b);
 #define Y1_LINE_STOP_SOUND_ 530
 #define Y2_LINE_STOP_SOUND_ 579
 
-#define WIDTH_BUTTON_1_ 150
+#define WIDTH_BUTTON_1_ 154
 #define HEIGHT_BUTTON_1_ 60
 
 #define X_BUTTON_EASY_GAME_ 505

@@ -22,15 +22,15 @@ void renderPacmanLiveText(const int& numberLives, TTF_Font*& fontText,
 bool renderStopMusic(BaseObject& smallLight, SDL_Event* event_,
                      SDL_Renderer* renderer, MouseButton& buttonStopMusic);
 
+void renderLineStop(SDL_Renderer* renderer, bool stopSound);
+
 bool renderStopSound(BaseObject& smallLight, SDL_Event* event_,
                      SDL_Renderer* renderer, MouseButton& buttonStopSound);
 
-void renderLineStop(SDL_Renderer* renderer, bool stopSound);
+void renderImageWinGame(SDL_Renderer* renderer, BaseObject* background);
 
 void renderImageLossGame(const int& scoreGame, TTF_Font*& fontText,
                          TextObject& moneyText, SDL_Renderer* renderer, SDL_Event* events_);
-
-void renderImageWinGame(SDL_Renderer* renderer, BaseObject* background);
 
 void renderImageRankScore(BaseObject& imageLossGame,
                           vector<int> rankScore, SDL_Event* event_,
