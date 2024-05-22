@@ -83,7 +83,7 @@
 	"CommonFunction.h"
 	<memory>
 
-1716370380 source:g:\cpp\game\game_btl\pacman\settinggame.cpp
+1716370442 source:g:\cpp\game\game_btl\pacman\settinggame.cpp
 	"SettingGame.h"
 
 1716091729 g:\cpp\game\game_btl\pacman\settinggame.h
@@ -108,7 +108,10 @@
 1716093183 source:g:\cpp\game\game_btl\pacman\timer.cpp
 	"Timer.h"
 
-1716281017 source:g:\cpp\game\game_btl\pacman\main.cpp
+1716370388 source:g:\cpp\game\game_btl\pacman\main.cpp
+	"gamePlay.h"
+
+1716370547 g:\cpp\game\game_btl\pacman\gameplay.h
 	"SettingGame.h"
 	<time.h>
 
