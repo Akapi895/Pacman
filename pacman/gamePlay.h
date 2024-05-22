@@ -67,15 +67,18 @@ void letsPlay() {
 			fpsTimer.start();
 			gBackground.render(gRenderer, NULL);
 
+			bool checkCtrlN = false;
+
 			while (SDL_PollEvent(&gEvent) != 0) {
 				if (gEvent.type == SDL_QUIT) exit(1);
 
 				if (gEvent.key.keysym.sym == SDLK_n && SDL_GetModState() & KMOD_CTRL) {
-					newGame = true;
 					mapNumber = 1;
+					checkCtrlN = true;
 					pacman.setScore(0);
 					winGame = false;
 					settingLostGame(gameMusic, gRenderer, numberDie, score, gFontText, scoreGame, &gEvent);
+                    newGame = true;
 				}
 
 				stopAndResumeGame(&gEvent, timeGame, gameMusic, stopSound, newGame);
@@ -88,18 +91,19 @@ void letsPlay() {
 
 				pacman.handleInput(gEvent);
 			}
+			//if (checkCtrlN) continue;
 
-			renderLineStop(gRenderer, stopSound);
-			gameMap.drawMap(gRenderer);
-			pacmanDoing(pacman, gameMap, gRenderer, &gameMusic, levelDifficult);
-			petDoing(pets, gameMap, gRenderer, pacman, levelDifficult);
+			if (!checkCtrlN) renderLineStop(gRenderer, stopSound);
+            if (!checkCtrlN) gameMap.drawMap(gRenderer);
+			if (!checkCtrlN) pacmanDoing(pacman, gameMap, gRenderer, &gameMusic, levelDifficult);
+			if (!checkCtrlN) petDoing(pets, gameMap, gRenderer, pacman, levelDifficult);
 
 			score = pacman.getScore();
 			timeCurrent = TIME_PLAY - timeGame.getTicks() / 1000;
 
-			renderScoreText(score, gFontText, scoreGame, gRenderer);
-			renderTimeText(timeCurrent, gFontText, textTimeGame, gRenderer);
-			renderPacmanLiveText(NUMBER_LIVES_ - numberDie, gFontText, pacmanLives, gRenderer, pacmanLivesImage);
+			if (!checkCtrlN) renderScoreText(score, gFontText, scoreGame, gRenderer);
+			if (!checkCtrlN) renderTimeText(timeCurrent, gFontText, textTimeGame, gRenderer);
+			if (!checkCtrlN) renderPacmanLiveText(NUMBER_LIVES_ - numberDie, gFontText, pacmanLives, gRenderer, pacmanLivesImage);
 
 			SDL_RenderPresent(gRenderer);
 
