@@ -167,7 +167,7 @@ void petDoing(PetObject* pets, GameMap& gameMap, SDL_Renderer* renderer, PacmanO
 		}
 		else if (levelDifficult == 8) {
 //            if (randomAutoDirect == 0) pets[i].autoAStarInputDirect(gameMap, pacman);
-            if (randomAutoDirect <= 5) pets[i].autoAiInputDirect(gameMap, pacman);
+            if (randomAutoDirect <= 5) pets[i].autoAStarInputDirect(gameMap, pacman);
             else pets[i].autoInputDirect(gameMap);
 		}
 

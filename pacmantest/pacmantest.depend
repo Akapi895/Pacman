@@ -103,7 +103,7 @@
 1716401434 source:g:\cpp\game\game_btl\pacmantest\rendergame.cpp
 	"RenderGame.h"
 
-1716401662 source:g:\cpp\game\game_btl\pacmantest\settinggame.cpp
+1716401750 source:g:\cpp\game\game_btl\pacmantest\settinggame.cpp
 	"SettingGame.h"
 
 1716092653 source:g:\cpp\game\game_btl\pacmantest\textobject.cpp
@@ -118,12 +118,13 @@
 	<algorithm>
 	<utility>
 
-1716393999 g:\cpp\game\game_btl\pacmantest\petobjectastar.h
+1716428769 g:\cpp\game\game_btl\pacmantest\petobjectastar.h
 	"CommonFunction.h"
-	<stack>
-	<float.h>
-	<set>
+	<list>
+	<utility>
+	<algorithm>
+	<iostream>
 
-1716398682 source:g:\cpp\game\game_btl\pacmantest\petobjectastar.cpp
+1716428841 source:g:\cpp\game\game_btl\pacmantest\petobjectastar.cpp
 	"PetObjectASTAR.h"
 
