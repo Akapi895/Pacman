@@ -90,6 +90,6 @@ _Game được chia thành 4 mức độ khó khác nhau:_
 - https://wiki.libsdl.org/SDL2/Tutorials (tìm hiểu về thư viện SDL 2.0)
 - https://www.youtube.com/playlist?list=PLNOBk_id22bw6LXhrGfhVwqQIa-M2MsLa (học về các kỹ thuật cơ bản như nhân vật, xử lý va chạm...)
 - Tài liệu của thầy Hiếu, cô Châu
-- https://www.geeksforgeeks.org/a-search-algorithm/ (học thuật toán A*)
+- https://rosettacode.org/wiki/ (học thuật toán A*)
 - Nhạc nền: Dragon ball
 - Hình ảnh: Tự thiết kế, https://opengameart.org/...
