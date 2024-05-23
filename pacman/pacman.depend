@@ -118,12 +118,13 @@
 	"SettingGame.h"
 	<time.h>
 
-1716401909 g:\cpp\game\game_btl\pacman\petobjectastar.h
+1716429065 g:\cpp\game\game_btl\pacman\petobjectastar.h
 	"CommonFunction.h"
-	<stack>
-	<float.h>
-	<set>
+	<list>
+	<utility>
+	<algorithm>
+	<iostream>
 
-1716401924 source:g:\cpp\game\game_btl\pacman\petobjectastar.cpp
+1716429064 source:g:\cpp\game\game_btl\pacman\petobjectastar.cpp
 	"PetObjectASTAR.h"
 

@@ -151,32 +151,24 @@ void petDoing(PetObject* pets, GameMap& gameMap, SDL_Renderer* renderer, PacmanO
 		int randomAutoDirect = rand() % levelDifficult;
 
 		if (levelDifficult == 13) {
-            if (randomAutoDirect == 0) pets[i].autoAStarInputDirect(gameMap, pacman);
-            else if (randomAutoDirect == 1 || randomAutoDirect == 5) pets[i].autoAiInputDirect(gameMap, pacman);
+            if (randomAutoDirect == 0) pets[i].autoAiInputDirect(gameMap, pacman);
+            else if (randomAutoDirect == 1 || randomAutoDirect == 5) pets[i].autoAStarInputDirect(gameMap, pacman);
             else pets[i].autoInputDirect(gameMap);
 		}
 		else if (levelDifficult == 11) {
-            if (randomAutoDirect == 0) pets[i].autoAStarInputDirect(gameMap, pacman);
+            if (randomAutoDirect <= 1) pets[i].autoAStarInputDirect(gameMap, pacman);
             else if (randomAutoDirect <= 3) pets[i].autoAiInputDirect(gameMap, pacman);
             else pets[i].autoInputDirect(gameMap);
 		}
 		else if (levelDifficult == 9) {
-            if (randomAutoDirect == 0) pets[i].autoAStarInputDirect(gameMap, pacman);
+            if (randomAutoDirect <= 2) pets[i].autoAStarInputDirect(gameMap, pacman);
             else if (randomAutoDirect <= 5) pets[i].autoAiInputDirect(gameMap, pacman);
             else pets[i].autoInputDirect(gameMap);
 		}
 		else if (levelDifficult == 8) {
-//            if (randomAutoDirect == 0) pets[i].autoAStarInputDirect(gameMap, pacman);
-            if (randomAutoDirect <= 5) pets[i].autoAiInputDirect(gameMap, pacman);
+            if (randomAutoDirect <= 4) pets[i].autoAStarInputDirect(gameMap, pacman);
             else pets[i].autoInputDirect(gameMap);
 		}
-
-//		if (randomAutoDirect % levelDifficult == 0)
-//			pets[i].autoAStarInputDirect(gameMap, pacman);
-//		else {
-////            pets[i].autoAStarInputDirect(gameMap, pacman);
-//            pets[i].autoInputDirect(gameMap);
-//		}
 
 		pets[i].setDirection(gameMap, renderer);
 		pets[i].petMove(gameMap);
