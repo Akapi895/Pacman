@@ -5,7 +5,7 @@
 1716083594 g:\cpp\game\game_btl\pacman\baseobject.h
 	"CommonFunction.h"
 
-1716369696 g:\cpp\game\game_btl\pacman\commonfunction.h
+1716446018 g:\cpp\game\game_btl\pacman\commonfunction.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_ttf.h>
@@ -86,7 +86,7 @@
 	"CommonFunction.h"
 	<memory>
 
-1716403246 source:g:\cpp\game\game_btl\pacman\settinggame.cpp
+1716445858 source:g:\cpp\game\game_btl\pacman\settinggame.cpp
 	"SettingGame.h"
 
 1716402023 g:\cpp\game\game_btl\pacman\settinggame.h

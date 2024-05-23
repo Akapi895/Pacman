@@ -36,7 +36,7 @@ const string GAME_TITLE = "PACMAN_23021709";
 
 const int FRAME_PER_SECOND = 14;
 
-const int NUMBER_PET_ = 200;
+const int NUMBER_PET_ = 4;
 
 const int TIME_PLAY = 200;
 
